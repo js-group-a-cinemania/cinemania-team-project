@@ -1,0 +1,62 @@
+/* Reset css */
+html {
+  box-sizing: border-box;
+  font-family: var(--dmsans);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* mobile  */
+
+
+
+/* tablet */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+
+
+}
+
+
+/* desktop */
+@media screen and (min-width: 1280px) {
+
+
+}
