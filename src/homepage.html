@@ -65,12 +65,96 @@
 
 
      <footer>
-      <div class="FooterDiv">
-        <p>©  2023 | All Rights Reserved | Developed with <svg width="14px" height="14px" fill="#F87719"><use href="./img/favorite-icon.svg"></use></svg> by GoIT Students</p>
+      <footer class="siteFooter">
+        <div class="container footerContainer">
+          <div class="footerContent">
+            <div class="footerText">&copy; 2023 | All Rights Reserved |</div>
+            <div class="footerText">
+              Developed with
+              <svg width="16" height="16" class="footerHeartIcon">
+                <defs>
+                  <linearGradient
+                    id="heartGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop class="gradientStart" offset="0%" />
+                    <stop class="gradientEnd" offset="100%" />
+                  </linearGradient>
+                </defs>
+                <use href="./img/heart.svg#icon-heart" fill="orange"></use>
+              </svg>
+              by
+              <button class="footerButton" type="button">GoIT Students</button>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <div id="modalTeam" class="modalTeamContainer">
+        <div class="modalTeamContent">
+          <span class="modalCloseButton">&times;</span>
+          <h1 class="modalTitle">Our Team</h1>
+          <ul class="teamList">
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/ceren.jpg"
+                alt="Ceren Cetin Baiden"
+              />
+              <h2 class="memberName">Ceren Cetin Baiden</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/berk.jpg"
+                alt="Berk Yagiz Karan"
+              />
+              <h2 class="memberName">Berk Yagiz Karan</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/furkan.jpg"
+                alt="Izzet Furkan Keser"
+              />
+              <h2 class="memberName">Izzet Furkan Keser</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/orkun.jpg"
+                alt="Orkun Korcak"
+              />
+              <h2 class="memberName">Orkun Korcak</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/omer.jpg"
+                alt="Omer Ferkan Kemik"
+              />
+              <h2 class="memberName">Omer Ferkan Kemik</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/aslinur.jpg"
+                alt="Aslinur Gurnar"
+              />
+              <h2 class="memberName">Aslinur Gurnar</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+          </ul>
+        </div>
       </div>
-
-     </footer>
-
-    <script type="module" src="/src/main.js"></script>
+    </footer>
   </body>
 </html>
