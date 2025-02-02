@@ -45,7 +45,26 @@ a {
   color: inherit;
 }
 /* mobile  */
-
+.toggle {
+  width:44px ;
+  height:18px;
+  background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+  border-radius: 198px;
+  position: relative;
+  cursor: pointer;
+  transition: backgroung-color 0,3s;
+}
+.toggle::before {
+  content: "";
+  width: 13.2px;
+  height: 13.5px;
+  background-color:  #ffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2.25px;
+  left: 28.6px;
+  transition: transform 0.3s;
+}
 
 
 /* tablet */
