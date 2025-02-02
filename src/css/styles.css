@@ -44,38 +44,160 @@ a {
   text-decoration: none;
   color: inherit;
 }
+body {
+  background-color: #000000;
+}
 /* mobile  */
-.toggle {
-  width:44px ;
-  height:18px;
-  background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+.HeaderDiv {
+  display: flex;
+  flex-direction: row;
+  width: 320px;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+.HeaderNav {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+.HeaderNavList {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+.HeaderNavListElem {
+  margin: 0 auto;
+  justify-content: space-around;
+}
+.HeaderNavPhoneMenu {
+  color: #b7b7b7;
+}
+.HeaderToggle {
+  width: 44px;
+  height: 18px;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   border-radius: 198px;
   position: relative;
   cursor: pointer;
-  transition: backgroung-color 0,3s;
+  transition: backgroung-color 0, 3s;
 }
-.toggle::before {
-  content: "";
+.HeaderToggle::before {
+  content: '';
   width: 13.2px;
   height: 13.5px;
-  background-color:  #ffff;
+  background-color: #ffff;
   border-radius: 50%;
   position: absolute;
   top: 2.25px;
   left: 28.6px;
   transition: transform 0.3s;
 }
+.SectionHero {
+  width: 320px;
+  height: 380px;
+  display: flex;
+  margin: 0 auto;
+  background: linear-gradient(
+    86.77deg,
+    #111111 30.38%,
+    rgba(17, 17, 17, 0) 65.61%
+  );
+  background-image: url(../img/hero.png);
+  background-size: cover;
+}
+.HomeHeroDiv {
+  padding-left: 20px;
+  margin-top: 40px;
+}
+.HeaderHeroTitle {
+  color: #ffff;
+  width: 199px;
+  font-family: Roboto, serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 37.5px;
+}
+.HeaderHeroContent {
+  color: #ffff;
+  width: 166px;
+  font-family: Roboto, serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.41px;
+  margin-top: 8px;
+}
+.HeaderHeroButton {
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  width: 110px;
+  height: 38px;
+  margin-top: 20px;
+  text-decoration-color: #111111;
+  border-radius: 74px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.06px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.SectionWeekly {
+  width: 320px;
+  display: flex;
+  margin: 0 auto;
+}
+.SectionWeeklyTitle {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+  padding: 0 20px;
+  justify-content: space-between;
+}
 
+.SectionTitles {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.75px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #ffff;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.SeeAll {
+  color: #f87719;
+}
+.SectionUpcoming {
+  width: 320px;
+  display: flex;
+  margin: 0 auto;
+}
+.SectionUpcomingTitle {
+  margin-top: 40px;
+  padding: 0 20px;
+}
+.FooterDiv {
+  width: 236px;
+  height: 40px;
+  color: #b7b7b7;
+  margin: 40px auto;
+}
+.FooterDiv p {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.41px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
 
 /* tablet */
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-
-
 }
-
 
 /* desktop */
 @media screen and (min-width: 1280px) {
-
-
 }
