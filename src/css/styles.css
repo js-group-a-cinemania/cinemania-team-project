@@ -142,76 +142,124 @@ body {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
-.SectionWeekly {
-  width: 320px;
-  display: flex;
-  margin: 0 auto;
+
+/* WEEKLY TRENDS START*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.SectionWeeklyTitle {
-  display: flex;
-  flex-direction: row;
-  margin-top: 40px;
-  padding: 0 20px;
-  justify-content: space-between;
+
+.body-style {
+  background-color: rgba(17, 17, 17, 1);
 }
-/* Genel Stil */
-.SectionTitles {
-    display: inline-block;
-    margin-left: 0;
-    margin-right: 0;
+body.light-theme .body-style {
+  background-color: #ffffff;
 }
-.SectionTitles {
+.weekly-trends-title {
   font-family: Roboto;
   font-size: 16px;
   font-weight: 500;
   line-height: 18.75px;
   text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  color: #ffff;
+  color: rgba(255, 255, 255, 1);
+}
+
+body.light-theme .weekly-trends-title {
+  color: #111111;
+}
+
+.weekly-trends-see-all {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.75px;
+  text-align: right;
+  color: rgba(248, 119, 25, 1);
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+}
+
+body.light-theme .weekly-trends-see-all {
+  background-color: #ffffff;
+}
+
+#weekly-trends-list{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+  margin-top: 24px;
+  margin-left: 20px;
+  margin-right: 20px;
   justify-content: space-between;
-  margin: 0 auto;
-
-}
-.SeeAll {
-  color: #f87719;
-
-  /* Mobil Görünüm (max-width: 768px) */
-@media (max-width: 768px) {
-    .SectionTitles {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    .SectionTitles.SeeAll {
-        margin-left: 109px;
-    }
 }
 
-/* Tablet Görünüm (min-width: 768px ve max-width: 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .SectionTitles {
-        margin-left: 32px;
-        margin-right: 32px;
-    }
 
-    .SectionTitles.SeeAll {
-        margin-left: 447px;
-    }
+.weekly-trends-content {
+  flex-wrap: wrap;
+  width: 280px;
+  height: 406px;
+  margin-right: 20px;
+  margin-left: 20px;
+  justify-content: space-between;
+  gap: 16px;
+  display: block;
+  overflow-x: scroll;
 }
 
-/* Desktop Görünüm (min-width: 1024px) */
-@media (min-width: 1024px) {
-    .SectionTitles {
-        margin-left: 32px;
-        margin-right: 32px;
-    }
+@media (min-width: 768px) {
+  #weekly-trends-list {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
 
-    .SectionTitles.SeeAll {
-        margin-left: 917px;
-    }
+  .weekly-trends-title {
+    font-size: 24px;
+    line-height: 28.13px;
+  }
+
+  .weekly-trends-see-all {
+    font-size: 24px;
+    line-height: 28.13px;
+  }
+
+
+  .weekly-trends-content  {
+    display: grid;
+    opacity: 0px;
+    grid-template-columns: repeat(3, 1fr);
+    width: 704px;
+    height: 325px;
+    /* margin-right: 32px;
+    margin-left: 32px; */
+    margin: 0 auto;
+  }
+
+ .weekly-trends-title {
+    font-size: 28px;
+    line-height: 32.81px;
+  }
+
+  .weekly-trends-see-all {
+    font-size: 28px;
+    line-height: 32.81px;
+  }
+
+  .weekly-trends-content {
+    margin: 0 auto;
+    /* margin-right: 32px;
+    margin-left: 32px; */
+    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    width: 1215px;
+    height: 574px;
+  }
 }
-}
+
+/* WEEKLY TRENDS END*/
 .SectionUpcoming {
   width: 320px;
   display: flex;
