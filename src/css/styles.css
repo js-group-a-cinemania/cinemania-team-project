@@ -46,6 +46,7 @@ a {
 }
 body {
   background-color: #000000;
+  font-family: 'Roboto', sans-serif;
 }
 /* mobile  */
 .HeaderDiv {
@@ -153,7 +154,12 @@ body {
   padding: 0 20px;
   justify-content: space-between;
 }
-
+/* Genel Stil */
+.SectionTitles {
+    display: inline-block;
+    margin-left: 0;
+    margin-right: 0;
+}
 .SectionTitles {
   font-family: Roboto;
   font-size: 16px;
@@ -165,9 +171,46 @@ body {
   color: #ffff;
   justify-content: space-between;
   margin: 0 auto;
+
 }
 .SeeAll {
   color: #f87719;
+
+  /* Mobil Görünüm (max-width: 768px) */
+@media (max-width: 768px) {
+    .SectionTitles {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .SectionTitles.SeeAll {
+        margin-left: 109px;
+    }
+}
+
+/* Tablet Görünüm (min-width: 768px ve max-width: 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .SectionTitles {
+        margin-left: 32px;
+        margin-right: 32px;
+    }
+
+    .SectionTitles.SeeAll {
+        margin-left: 447px;
+    }
+}
+
+/* Desktop Görünüm (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .SectionTitles {
+        margin-left: 32px;
+        margin-right: 32px;
+    }
+
+    .SectionTitles.SeeAll {
+        margin-left: 917px;
+    }
+}
 }
 .SectionUpcoming {
   width: 320px;
@@ -178,26 +221,306 @@ body {
   margin-top: 40px;
   padding: 0 20px;
 }
-.FooterDiv {
-  width: 236px;
-  height: 40px;
-  color: #b7b7b7;
-  margin: 40px auto;
+
+/* FOOTER */
+
+/* Genel */
+.siteFooter {
+  height: 100px;
 }
-.FooterDiv p {
-  font-family: Roboto;
+
+.footerContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column; /* Mobilde dikey düzen */
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 4px;
+  color: rgba(183, 183, 183, 1);
   font-size: 14px;
-  font-weight: 400;
-  line-height: 16.41px;
-  text-align: center;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* tablet */
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+body.light-theme .footerContent {
+  color: #111111;
 }
 
-/* desktop */
+.footerText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.footerButton {
+  text-decoration: underline;
+  color: var(--footer-text);
+  cursor: pointer;
+  border: none;
+  display: inline;
+  background: transparent;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.footerButton:hover {
+  color: #ff9900;
+}
+
+/* Mobil - 320px ve sonrası */
+@media screen and (max-width: 767px) {
+  .footerContainer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .footerContent {
+    flex-direction: column; /* Mobilde dikey düzen */
+    font-size: 14px;
+  }
+
+  .teamList {
+    display: block;
+  }
+
+  .teamMember {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .memberPhoto {
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .memberPhoto:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .modalTeamContent {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+/* Tablet - 768px ve sonrası */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .siteFooter {
+    height: 150px;
+  }
+
+  .footerContent {
+    flex-direction: row; /* Tablet ve masaüstü için yatay düzen */
+    column-gap: 10px;
+    font-size: 16px;
+    line-height: 1.19;
+  }
+
+  .footerContainer {
+    max-width: 768px;
+    padding: 0 32px;
+    margin: 0 auto;
+  }
+
+  .teamList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .memberPhoto {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .memberPhoto:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .modalTeamContent {
+    width: 90%;
+  }
+}
+
+/* Masaüstü - 1280px ve sonrası */
 @media screen and (min-width: 1280px) {
+  .siteFooter {
+    height: 200px;
+  }
+
+  .footerContent {
+    flex-direction: row; /* Tablet ve masaüstü için yatay düzen */
+    column-gap: 10px;
+    font-size: 16px;
+    line-height: 1.19;
+  }
+
+  .footerContainer {
+    max-width: 1280px;
+  }
+
+  .teamList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-around;
+  }
+
+  .memberPhoto {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .memberPhoto:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .modalTeamContent {
+    width: 80%;
+  }
+}
+
+/* Modal içeriği ve üyeler için stiller */
+.modalTeamContainer {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 50%;
+}
+
+.modalTeamContent {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 14px;
+  width: 80%;
+  position: relative;
+}
+
+.modalTeamContent::before {
+  filter: blur(3rem);
+  opacity: 1;
+}
+
+.modalTeamContent::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(
+    from var(--angle),
+    #ff4545,
+    #00ff99,
+    #006aff,
+    #ff0095,
+    #ff4545
+  );
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  padding: 3px;
+  border-radius: 15px;
+  animation: 3s spin linear infinite;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+
+  to {
+    --angle: 360deg;
+  }
+}
+
+.close-modal-click {
+  color: #ffffff;
+  float: right;
+  font-size: 38px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.close-modal-click:hover,
+.close-modal-click:focus {
+  color: rgb(103, 100, 100);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.teamList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 40px;
+  justify-content: space-around;
+}
+
+.memberPhoto {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.memberPhoto:hover {
+  transform: scale(1.2) rotate(10deg); /* Fotoğrafı biraz büyütüp döndürüyoruz */
+  box-shadow: 0 12px 20px rgba(255, 99, 71, 0.8); /* Portakal kırmızısı gölge */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.modalTitle {
+  text-align: center;
+}
+
+.memberName {
+  background: linear-gradient(orange, gray);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 10px;
+}
+
+body.light-theme .memberName {
+  color: black;
+}
+
+.footerHeartIcon {
+  margin-left: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
 }
