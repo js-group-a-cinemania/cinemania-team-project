@@ -4,32 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/styles.css"/>
-    <script>
+    <!-- <script>
         let localS = localStorage.getItem('theme');
   
         if (localS === 'light') {
           document.documentElement.setAttribute('data-theme', 'light');
         }
-      </script>
-    <title>MYLİBRARY</title>
+      </script> -->
+    <title>My Library</title>
   </head>
   <body>
 
-    <header>
-      <div>
-          <nav>
-              <ul>
-                  <li><a href="./index.html"><img src="./img/home-image.png" alt="home"></a></li>
-                  <li><a>MENU</a></li>
-                  <li><div class="toggle"></div></li>
-              </ul>
-          </nav>
-      </div>
-  </header>
+<div class="hero">
+  <div class="hero-content">
+      <h1>Create Your <br> Dream Cinema</h1>
+      <p>Is a guide to designing a personalized movie theater experience with the right equipment, customized decor, and favorite films.</p>
+  </div>
+</div>
 
-    <main>
-    <!-- gerekli kodlar -->
-    </main>
+<div id="filter-container">
+  <select id="genre-filter">
+      <option value="all">All Genres</option>
+  </select>
+</div>
+
+<div class="empty-library" style="display: none;">
+    <h2>OOPS... We are very sorry!</h2>
+    <p>You don’t have any movies at your library.</p>
+    <button id="search-movie">Search Movie</button>
+</div>
+
+<div id="library-container"></div>
+<button id="load-more">Load More</button>
+<button id="scroll-up">↑</button>
+
+<script src="./js/footer.js"></script>
+
 
     <script type="module" src="/src/main.js"></script>
   </body>
