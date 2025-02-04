@@ -45,23 +45,65 @@
     </section>
 
     <!-- WEEKLY TRENDS -->
-     <section class="SectionWeeklyTrends">
-    <div id="weeklyTrendsList">
-      <h3 class="weeklyTrendsTitle">WEEKLY TRENDS</h3>
-      <button class="weeklyTrendsSeeAll" id="viewAll">See all</button>
-    </div>
-    <div class="weeklyTrendsContent" id="trendMovies"></div>
+    <section class="SectionWeeklyTrends">
+      <div id="weeklyTrendsList">
+        <h3 class="weeklyTrendsTitle">WEEKLY TRENDS</h3>
+        <button class="weeklyTrendsSeeAll" id="viewAll">See all</button>
+      </div>
+      <div class="weeklyTrendsContent" id="trendMovies"></div>
     </section>
-
-    
 
     <!-- UPCOMING THIS MONTH -->
 
-    <section class="SectionUpcoming">
-      <div class="SectionUpcomingTitle">
-        <h3 class="SectionTitles">UPCOMING THIS MONTH</h3>
+    <section class="sectionUpComing">
+      <div class="sectionUpComingTitle">
+        <div class="movieDetailsContainer">
+          <h2 class="monthlyUpcomingTitle">Upcoming This Month</h2>
+          <div class="movieInfoContent">
+            <div id="moviePosterBox" class="moviePosterContainer">
+              <img class="moviePoster" alt="Movie Poster" id="movieImage" />
+            </div>
+            <div class="movieInfoBox">
+              <h3 class="movieTitle" id="movieName">THE LOST CITY</h3>
+              <div class="movieAdditionalInfo">
+                <ul class="leftInfoList">
+                  <li class="infoItem">
+                    <p class="infoLabel">Release Date</p>
+                    <p class="releaseDate" id="releaseDate">01.01.0001</p>
+                  </li>
+                  <li class="infoItem">
+                    <p class="infoLabel">Vote / Votes</p>
+                    <p class="voteInfo">
+                      <span class="movieRating" id="movieVote"> 0.0</span>
+                      <span class="voteSeparator"> / </span>
+                      <span class="totalVotes" id="movieVotes">0</span>
+                    </p>
+                  </li>
+                </ul>
+                <ul class="rightInfoList">
+                  <li class="infoItem">
+                    <p class="infoLabel">Popularity</p>
+                    <p class="popularityNumber" id="moviePopularity">1</p>
+                  </li>
+                  <li class="infoItem">
+                    <p class="infoLabel">Genre</p>
+                    <p class="genreName" id="movieGenre">Test</p>
+                  </li>
+                </ul>
+              </div>
+              <h3 class="aboutMovieTitle">About</h3>
+              <p class="movieOverviewText" id="movieOverview">Some text</p>
+              <button
+                type="button"
+                class="addToLibraryButton"
+                id="libraryButton"
+              >
+                Add to my library
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="SectionUpcomingConcent"></div>
     </section>
 
     <!-- FOOTER -->
@@ -93,9 +135,7 @@
         </div>
       </footer>
 
-
-<!-- desing by goit students -->
-
+      <!-- desing by goit students -->
 
       <div id="modalTeam" class="modalTeamContainer">
         <div class="modalTeamContent">
