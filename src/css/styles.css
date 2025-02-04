@@ -107,7 +107,7 @@ body {
   height: 380px;
   display: flex;
   margin: 0 auto;
-  background-image: url(../img/hero.png);
+  background: url(../img/hero.png), linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,1));
   background-size: cover;
 
   /* background: linear-gradient(
@@ -142,6 +142,9 @@ body {
   font-size: 14px;
   line-height: 16.41px;
   margin-top: 8px;
+}
+.HeroSpan {
+  display: none;
 }
 .HeaderHeroButton {
   background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
@@ -374,10 +377,14 @@ body.light-theme .footerContent {
     font-size: 14px;
     line-height: 16.41px;
   }
+  .HeroSpan{
+    display: flex;
+  }
   .SectionWeeklyTrends {
     width: 768px;
   }
   #weeklyTrendsList {
+    width: 768px;
     margin-left: 32px;
     margin-right: 32px;
   }
