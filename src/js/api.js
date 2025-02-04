@@ -1,19 +1,19 @@
-import axios from 'axios';
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization:
+      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYWNhZjRmYjMwZTRhZGVkYTBjYjI1MTQ3NGFhYTdkYSIsIm5iZiI6MTczODM1NDIxMy4zNDgsInN1YiI6IjY3OWQyZTI1MTc2ZmRiMjI0NGNiMjkzMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ug0aezZ5htnawKCPoADR0i-JxcDzj43sBX4NiKOKbvg',
+  },
+};
+let page = 1;
+const searchParams = new URLSearchParams({
+  page: page,
+  language: 'en-US',
+});
+const apiUrl = `https://api.themoviedb.org/3/trending/all/day?${searchParams}`;
 
-
-const apiKey = '9a0d30072ad38e4a4c69d8b167f5dfc1';
-const baseUrl = 'https://api.themoviedb.org/3';
-
-// Popüler filmler
-export async function fetchTrendingMoviesForThisWeek(page = 1) {
-  const response = await axios.get(`${baseUrl}/trending/movie/week`, {
-    params: {
-      api_key: apiKey,
-      page: page,
-    },
-  });
-  return {
-    results: response.data.results,
-    totalPages: response.data.total_pages,
-  };
-}
+fetch(apiUrl, options)
+  .then(res => res.json())
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
