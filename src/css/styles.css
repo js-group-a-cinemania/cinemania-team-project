@@ -107,7 +107,8 @@ body {
   height: 380px;
   display: flex;
   margin: 0 auto;
-  background: url(../img/hero.png), linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,1));
+  background: url(../img/hero.png),
+    linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
   background-size: cover;
 
   /* background: linear-gradient(
@@ -207,12 +208,6 @@ body.lightTheme .weeklyTrendsTitle {
   border: none;
   background-color: inherit;
 }
-.weeklyTrendsTitle {
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 18.75px;
-}
 
 body.lightTheme .weeklyTrendsSeeAll {
   background-color: #ffffff;
@@ -220,6 +215,7 @@ body.lightTheme .weeklyTrendsSeeAll {
 .SectionWeeklyTrends {
   width: 320px;
   display: flex;
+  flex-direction: column;
   margin: 0 auto;
   justify-content: space-around;
 }
@@ -358,12 +354,16 @@ body.light-theme .footerContent {
 }
 
 /* Tablet - 768px ve sonrası */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (min-width: 768px) {
   .HeaderDiv {
     width: 768px;
   }
   .SectionHero {
     width: 768px;
+  }
+  .HomeHeroDiv {
+    margin-top: 62px;
+    padding-left: 32px;
   }
   .HeaderHeroTitle {
     width: 332px;
@@ -376,19 +376,25 @@ body.light-theme .footerContent {
     font-weight: 400;
     font-size: 14px;
     line-height: 16.41px;
+    margin-top: 8px;
   }
-  .HeroSpan{
+  .HeroSpan {
     display: flex;
+  }
+  .HeaderHeroButton{
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
+    margin-top: 32px;
   }
   .SectionWeeklyTrends {
     width: 768px;
   }
   #weeklyTrendsList {
     width: 768px;
-    margin-left: 32px;
-    margin-right: 32px;
+    margin-top: 52px;
+    padding: 0 32px;
   }
-
   .weeklyTrendsTitle {
     font-size: 24px;
     line-height: 28.13px;
@@ -397,6 +403,7 @@ body.light-theme .footerContent {
   .weeklyTrendsSeeAll {
     font-size: 24px;
     line-height: 28.13px;
+    padding-left: 34px;
   }
 
   /* .weeklyTrendsContent {
@@ -409,13 +416,13 @@ body.light-theme .footerContent {
   } */
 
   .weeklyTrendsTitle {
-    font-size: 28px;
-    line-height: 32.81px;
+    font-size: 24px;
+    line-height: 28.13px;
   }
 
   .weeklyTrendsSeeAll {
-    font-size: 28px;
-    line-height: 32.81px;
+    font-size: 24px;
+    line-height: 28.13px;
   }
 
   .weeklyTrendsContent {
@@ -426,7 +433,15 @@ body.light-theme .footerContent {
     width: 1215px;
     height: 574px;
   }
-
+  .sectionUpComing {
+    width: 768px;
+    margin-top: 44px;
+  }
+  .sectionUpComingTitle {
+    font-size: 24px;
+    line-height: 28.13px;
+    padding-left: 34px;
+  }
   .siteFooter {
     height: 150px;
   }
@@ -468,6 +483,59 @@ body.light-theme .footerContent {
 
 /* Masaüstü - 1280px ve sonrası */
 @media screen and (min-width: 1280px) {
+  .SectionHero {
+    width: 1280px;
+    height: 720px;
+  }
+  .HomeHeroDiv {
+    margin-top: 169px;
+  }
+  .HeaderHeroTitle{
+    width: 464px;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 75px;
+  }
+  .HeaderHeroContent {
+    width: 464px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18.75px;
+    margin-top: 16px;
+  }
+   .HeroSpan {
+    display: flex;
+  }
+  .HeaderHeroButton{
+    width: 130px;
+    height: 48px;
+    font-size: 16px;
+    margin-top: 32px;
+  }
+  .SectionWeeklyTrends{
+    width: 1280px;
+  }
+  #weeklyTrendsList {
+    width: 1280px;
+    margin-top: 80px;
+  }
+  .weeklyTrendsTitle {
+    font-size: 28px;
+    line-height: 32.81px;
+  }
+  .weeklyTrendsSeeAll {
+    font-size: 28px;
+    line-height: 32.81px;
+  }
+  .sectionUpComing{
+    width: 1280px;
+    margin-top: 60px;
+  }
+  .sectionUpComingTitle {
+    font-size: 28px;
+    line-height: 32.81px;
+  }
+
   .siteFooter {
     height: 200px;
   }
