@@ -403,6 +403,7 @@ body {
 
 /* YAGİZ BERK CSS */
 
+/* Reset css */
 html {
   box-sizing: border-box;
   font-family: var(--dmsans);
@@ -449,7 +450,6 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
