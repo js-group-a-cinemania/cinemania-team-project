@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>HOME</title>
+  </head>
+  <body>
+    <header>
+      <div class="HeaderDiv">
+        <nav class="HeaderNav">
+          <ul class="HeaderNavList">
+            <li class="HeaderNavListElem">
+              <a href="./index.html"
+                ><img src="./img/home-image.png" alt="home"
+              /></a>
+            </li>
+            <li class="HeaderNavListElem ForPhone">
+              <a class="HeaderNavPhoneMenu">MENU</a>
+            </li>
+            <li class="HeaderNavListElem"><div class="HeaderToggle"></div></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- SECTION HERO -->
+
+    <section class="SectionHero">
+      <div class="HomeHeroDiv">
+        <h1 class="HeaderHeroTitle">Let’s Make Your Own Cinema</h1>
+        <p class="HeaderHeroContent">
+          Is a guide to creating a personalized movie theater experience. You'll
+          need a projector, screen, and speakers.<span class="HeroSpan"
+            >Decorate your space, choose your films, and stock up on snacks for
+            the full experience.</span
+          >
+        </p>
+        <button type="button" class="HeaderHeroButton">Get Started</button>
+      </div>
+    </section>
+
+    <!-- WEEKLY TRENDS -->
+    <section class="SectionWeeklyTrends">
+      <div id="weeklyTrendsList">
+        <h3 class="weeklyTrendsTitle">WEEKLY TRENDS</h3>
+        <button class="weeklyTrendsSeeAll" id="viewAll">See all</button>
+      </div>
+      <div class="weeklyTrendsContent" id="trendMovies"></div>
+    </section>
+
+    <!-- UPCOMING THIS MONTH -->
+
+    <section class="sectionUpComing">
+      <div class="sectionUpComingDiv">
+        <div class="movieDetailsContainer">
+          <h2 class="sectionUpComingTitle">UPCOMİNG THİS MONTH</h2>
+          <div class="movieInfoContent">
+            <div id="moviePosterBox" class="moviePosterContainer">
+              <img class="moviePoster" alt="Movie Poster" id="movieImage" />
+            </div>
+            <div class="movieInfoBox">
+              <h3 class="movieTitle" id="movieName">THE LOST CITY</h3>
+              <div class="movieAdditionalInfo">
+                <ul class="leftInfoList">
+                  <li class="infoItem">
+                    <p class="infoLabel">Release Date</p>
+                    <p class="releaseDate" id="releaseDate">01.01.0001</p>
+                  </li>
+                  <li class="infoItem">
+                    <p class="infoLabel">Vote / Votes</p>
+                    <p class="voteInfo">
+                      <span class="movieRating" id="movieVote"> 0.0</span>
+                      <span class="voteSeparator"> / </span>
+                      <span class="totalVotes" id="movieVotes">0</span>
+                    </p>
+                  </li>
+                </ul>
+                <ul class="rightInfoList">
+                  <li class="infoItem">
+                    <p class="infoLabel">Popularity</p>
+                    <p class="popularityNumber" id="moviePopularity">1</p>
+                  </li>
+                  <li class="infoItem">
+                    <p class="infoLabel">Genre</p>
+                    <p class="genreName" id="movieGenre">Test</p>
+                  </li>
+                </ul>
+              </div>
+              <h3 class="aboutMovieTitle">About</h3>
+              <p class="movieOverviewText" id="movieOverview">Some text</p>
+              <button
+                type="button"
+                class="addToLibraryButton"
+                id="libraryButton"
+              >
+                Add to my library
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <footer class="siteFooter">
+        <div class="container footerContainer">
+          <div class="footerContent">
+            <div class="footerText">&copy; 2023 | All Rights Reserved |</div>
+            <div class="footerText">
+              Developed with
+              <svg class="footerHeartIcon" width="14" height="14">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 13.3765L6.02 12.4062C2.38 9.21808 0 7.06957 0 4.4359C0 2.28739 1.68 0.624023 3.85 0.624023C5.04 0.624023 6.23 1.17848 7 2.07947C7.77 1.17848 8.96 0.624023 10.15 0.624023C12.32 0.624023 14 2.28739 14 4.4359C14 7.06957 11.62 9.21808 7.98 12.4062L7 13.3765Z"
+                    fill="#F87719"
+                  />
+                </svg>
+              </svg>
+              by
+              <button class="footerButton" type="button">GoIT Students</button>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- desing by goit students -->
+
+      <div id="modalTeam" class="modalTeamContainer">
+        <div class="modalTeamContent">
+          <span class="modalCloseButton">&times;</span>
+          <h1 class="modalTitle">Our Team</h1>
+          <ul class="teamList">
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/ceren.jpg"
+                alt="Ceren Cetin Baiden"
+              />
+              <h2 class="memberName">Ceren Cetin Baiden</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/berk.jpg"
+                alt="Berk Yagiz Karan"
+              />
+              <h2 class="memberName">Berk Yagiz Karan</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/furkan.jpg"
+                alt="Izzet Furkan Keser"
+              />
+              <h2 class="memberName">Izzet Furkan Keser</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/orkun.jpg"
+                alt="Orkun Korcak"
+              />
+              <h2 class="memberName">Orkun Korcak</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/omer.jpg"
+                alt="Omer Ferkan Kemik"
+              />
+              <h2 class="memberName">Omer Ferkan Kemik</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/footer.js"></script>
+    <script src="./js/weekly-trends.js"></script>
+  </body>
+</html>
