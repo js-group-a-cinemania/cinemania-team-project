@@ -1,5 +1,6 @@
+import axios from 'axios';
+
 const options = {
-  method: 'GET',
   headers: {
     accept: 'application/json',
     Authorization:
@@ -13,7 +14,15 @@ const searchParams = new URLSearchParams({
 });
 const apiUrl = `https://api.themoviedb.org/3/trending/all/day?${searchParams}`;
 
-fetch(apiUrl, options)
-  .then(res => res.json())
-  .then(res => console.log(res))
-  .catch(err => console.error(err));
+const fetchTrendingMovies = async () => {
+  try {
+    const response = await axios.get(apiUrl, options);
+
+    console.log(response.data.results);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+// Fonksiyonu çağırma
+fetchTrendingMovies();
