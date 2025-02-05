@@ -4,43 +4,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/styles.css"/>
-    <!-- <script>
-        let localS = localStorage.getItem('theme');
-  
-        if (localS === 'light') {
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      </script> -->
-    <title>My Library</title>
+    <title>Cinemania Library</title>
   </head>
   <body>
+    <div class="library-container">
+      <header class="main-header">
+        <div class="logo-wrapper">
+          <img
+            loading="lazy"
+            src="./images/Logo.png"
+            alt="Cinemania Logo"
+            class="logo-image"
+          />
+        </div>
+        <nav class="nav-container" aria-label="Main navigation">
+          <div class="nav-links">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#catalog" class="nav-link">Catalog</a>
+            <a href="#library" class="nav-link active-link" aria-current="page"
+              >My Library</a
+            >
+          </div>
+          <button class="theme-toggle-button" aria-label="Toggle theme">
+            <img
+              loading="lazy"
+              src="./images/my-library-foto/Component 20.png"
+              alt="Theme toggle icon"
+              class="theme-toggle"
+            />
+          </button>
+        </nav>
+      </header>
 
-<div class="hero">
-  <div class="hero-content">
-      <h1>Create Your <br> Dream Cinema</h1>
-      <p>Is a guide to designing a personalized movie theater experience with the right equipment, customized decor, and favorite films.</p>
-  </div>
-</div>
+      <div class="hero-section">
+        <h1 class="hero-title">
+          Create Your <br />
+          Dream Cinema
+        </h1>
+        <p class="hero-description">
+          Is a guide to designing a personalized movie theater experience
+          <br />with the right equipment, customized decor, and favorite films.
+          <br />
+          This guide helps you bring the cinema experience into your own
+          <br />home with cozy seating, dim lighting, and movie theater snacks.
+        </p>
+      </div>
+      
+        <select id="genreFilter" class="genre-filter">
+          <option value="all">Genre</option>
+        </select>
 
-<div id="filter-container">
-  <select id="genre-filter">
-      <option value="all">All Genres</option>
-  </select>
-</div>
+      <div class="empty-library-message" role="alert">
+        <p>
+          OOPS...<br />We are very sorry!<br />You don't have any movies in your
+          library.
+        </p>
+      </div>
 
-<div class="empty-library" style="display: none;">
-    <h2>OOPS... We are very sorry!</h2>
-    <p>You don’t have any movies at your library.</p>
-    <button id="search-movie">Search Movie</button>
-</div>
+      <button class="search-button">Search Movie</button>
 
-<div id="library-container"></div>
-<button id="load-more">Load More</button>
-<button id="scroll-up">↑</button>
+      <div class="loader" style="display: none;">
+        <div class="spinner"></div>
+      </div>
 
-<script src="./js/footer.js"></script>
-
-
-    <script type="module" src="/src/main.js"></script>
+      <footer class="footer-content">
+        <p>
+          &copy; 2025 | All Rights Reserved | Developed by
+          <a href="#">GoIT Students</a>
+        </p>
+      </footer>
+    </div>
   </body>
 </html>

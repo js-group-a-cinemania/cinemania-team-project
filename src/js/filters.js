@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const genreFilter = document.getElementById("genreFilter");
     if (window.genresList && window.genresList.length > 0) {
         updateGenreFilter(window.genresList);
     } else {
@@ -7,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function updateGenreFilter(genres) {
+    const genreFilter = document.getElementById("genreFilter");
+    if (!genreFilter) return;
+    
     genreFilter.innerHTML = `<option value="all">All Genres</option>`;
     genres.forEach(genre => {
         const option = document.createElement("option");
