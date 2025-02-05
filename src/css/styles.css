@@ -184,7 +184,7 @@ body.dark-mode {
     #111111 33.63%,
     rgba(17, 17, 17, 0) 76.86%
   );
-  width: 400px;
+  width: 600px;
   height: 380px;
   left: 0px;
   top: 58px;
@@ -212,15 +212,22 @@ body.dark-mode {
   position: absolute;
   top: 100px;
   left: 50px;
-  max-width: 177px;
+  max-width: 300px;
   height: 69px;
 }
 .star-rating {
   font-size: 20px;
-  color: gold;
+  color: orange;
   font-weight: bold;
   margin-bottom: 5px;
 }
+.star-rating-hero {
+  font-size: 20px;
+  color: orange;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
 .btn-list {
   display: flex;
   gap: 8px;
@@ -235,6 +242,16 @@ body.dark-mode {
   border: none;
   font-size: 12px;
   margin-top: 20px;
+  transition: background all 0.3s;
+}
+.js-trailer-btn:hover {
+  background: #111111;
+  color: orange;
+  border: 1px solid orange;
+}
+.js-details-btn:hover {
+  color: orange;
+  border: 1px solid orange;
 }
 .js-details-btn {
   background: transparent;
@@ -253,7 +270,7 @@ body.dark-mode {
 .search-input {
   width: 224px;
   height: 40px;
-  padding: 10px 142px 10px 20px;
+  padding: 10px 142px 10px 10px;
   gap: 10px;
   border-radius: 8px;
   border: 1px solid #595959;
@@ -306,7 +323,7 @@ body.dark-mode {
   margin: 0 auto;
   width: 173px;
   height: 40px;
-  padding: 10px 125px 10px 20px;
+  padding: 10px 110px 10px 10px;
   gap: 10px;
   border-radius: 8px;
   border: 1px solid #595959;
@@ -331,17 +348,17 @@ body.dark-mode {
   display: flex;
   flex-direction: row;
 }
-.searh-icon {
+.search-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   transition: stroke 0.3s all;
 }
 .search-button:hover {
-  background: #fff;
+  background: transparent;
   border: 1px solid orange;
 }
-.search-button:hover + .searh-icon {
+.search-button:hover + .search-icon {
   stroke: orange;
 }
 
@@ -353,7 +370,7 @@ body.dark-mode {
   align-items: center;
   position: relaative;
   margin: 0 auto;
-  margin-top: 400px;
+  margin-top: 290px;
 }
 .no-result {
   display: none;
@@ -485,6 +502,38 @@ body.dark-mode {
   color: #f87719;
 }
 
+.movie-container {
+  margin-top: 70px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  text-align: center;
+}
+.close-pop-up {
+  border: none;
+  background: none;
+}
+.closeIcon:hover {
+  fill: #f87719;
+}
+
+.modal-movie-info {
+  display: none;
+  width: 280px;
+  height: 847px;
+  gap: 0px;
+  border-radius: 16px;
+}
+
+.gallery-movies-title {
+  text-align: left;
+  padding-left: 10px;
+}
+.gallery-movies-details {
+  text-align: left;
+  padding-left: 10px;
+}
+
 /* tablet */
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .backdrop,
@@ -561,7 +610,7 @@ body.dark-mode {
     position: absolute;
     top: 100px;
     left: 50px;
-    max-width: 295px;
+    max-width: 350px;
     height: 54px;
   }
   .catalog-movies {
@@ -596,7 +645,7 @@ body.dark-mode {
   .gallery-movies-item:hover,
   .gallery-movies-item:focus {
     cursor: pointer;
-    box-shadow: 1px 1px 14px 2px rgba(255, 107, 8, 0.42);
+    box-shadow: 1px 1px 14px 2px rgb(187, 84, 16);
     transform: scale(1.03);
   }
 
@@ -641,6 +690,22 @@ body.dark-mode {
 
   .gallery-movies {
     row-gap: 16px;
+  }
+  .movie-container {
+    margin-top: 100px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: center;
+  }
+  .modal-movie-info {
+    display: none;
+    width: 704px;
+    height: 488px;
+    gap: 0px;
+    border-radius: 16px;
+    position: absolute;
+    transform: scale(50%, 50%);
   }
 }
 
@@ -717,7 +782,7 @@ body.dark-mode {
     position: absolute;
     margin: 0 auto;
     left: 15%;
-    max-width: 360px;
+    max-width: 700px;
     height: 160px;
   }
   .gallery-movies {
@@ -744,5 +809,23 @@ body.dark-mode {
 
   .gallery-movies-title {
     margin-bottom: 3px;
+  }
+  .movie-container {
+    margin-top: 100px;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 36px;
+    text-align: center;
+  }
+  .modal-movie-info {
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+    width: 846px;
+    height: 598px;
+    text-align: center;
+    color: white;
+    position: relative;
+    display: none;
   }
 }

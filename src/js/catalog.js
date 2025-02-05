@@ -62,7 +62,7 @@ function displayHeroMovie(movie) {
     </div>
     <div class="hero-content">
         <h1 class="title hero-title">${title}</h1>
-        <p class="star-rating">${starRatingCalc(vote_average)}</p>
+        <p class="star-rating-hero">${starRatingCalc(vote_average)}</p>
         <p class="text hero-text">${overview}</p>
         <ul class="btn-list">
             <li><button class="btn js-trailer-btn" data-id="${id}">Watch trailer</button></li>
@@ -106,7 +106,7 @@ function displayMovies(movies) {
             <h3 class="gallery-movies-title">${title}</h3>
             <div class="gallery-movies-wrap">
               <p class="gallery-movies-details">${genre_ids} | ${year}</p>
-              <p class="star-rating">${starRating}</p>
+              <div class="star-rating">${starRating}</div>
             </div>
           </div>
         </li>
@@ -129,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const backdrop = document.getElementById('backdrop');
   const mobilNav = document.getElementById('mobil-nav');
 
-
   menuToggle.addEventListener('click', function (event) {
     event.preventDefault();
     mobilMenu.classList.add('active');
@@ -149,3 +148,45 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //! MOBIL MENU SON
+
+//!MOVIE SEARCH
+
+document.addEventListener('DOMContentLoaded', function () {
+  const searchForm = document.getElementById('search-form');
+  const searchInput = document.getElementById('form-input');
+  const searchInput2 = document.querySelector('.search-input2');
+  const closeIcon = document.querySelector('.close-icon');
+  const movieContainer = document.querySelector('.movie-container');
+
+  searchForm.addEventListener('submit', async function (event) {
+    event.preventDefault();
+    const query = searchInput.value.trim();
+    if (query) {
+      await searchMovies(query);
+      searchInput2.value = query;
+    }
+  });
+
+  closeIcon.addEventListener('click', function () {
+    searchInput2.value = '';
+  });
+
+  async function searchMovies(query) {
+    try {
+      const response = await fetch(
+        `${baseUrl}/search/movie?api_key=${apiKey}&query=${query}`
+      );
+      const data = await response.json();
+      if (data.results.length > 0) {
+        displayMovies(data.results);
+      } else {
+        movieContainer.innerHTML =
+          '<p class="no-results">OOPS...<br>We are very sorry!<br>We don’t have any results matching your search.</p>';
+      }
+    } catch (error) {
+      console.error('Hata:', error);
+    }
+  }
+});
+
+//!MOVIE SEARCH SONU
