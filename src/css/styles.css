@@ -16,6 +16,8 @@ body {
   line-height: 1.5;
   color: var(--white);
   background: var(--background);
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 14px;
 }
 .library-container {
   display: flex;
@@ -439,12 +441,6 @@ a {
 
 /* mobile  */
 
-body {
-  transition: background-color 0.3s, color 0.3s;
-  font-family: 'Roboto', serif;
-  color: #595959;
-  font-size: 14px;
-}
 
 body.dark-mode {
   background-color: #111111;
