@@ -451,8 +451,8 @@ background: var(--background);
   color: #595959;
 }
 .dark-mode .mobil {
-  background: #111111;
-  color: #ffffff;
+background: var(--background);
+  color: var(--white);
 }
 /* Toggle container */
 .toggle-container {
