@@ -4,7 +4,10 @@
   --grey: #b7b7b7;
   --orange: #f87719;
   --secondary-text: #f8f8f8;
-  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", "Source Han Sans CN", sans-serif;
+  --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Ubuntu, 'Helvetica Neue', Helvetica, Arial, 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei',
+    'Source Han Sans CN', sans-serif;
 }
 * {
   margin: 0;
@@ -50,7 +53,7 @@ body {
   object-fit: contain;
 }
 .nav-container {
-  display:contents;
+  display: contents;
   gap: 20px;
 }
 .nav-links {
@@ -88,8 +91,12 @@ body {
   animation: spin 1s linear infinite;
 }
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .active-link {
   color: var(--orange);
@@ -117,7 +124,7 @@ body {
   background-image: url(../images/hero.png);
   background-repeat: no-repeat;
   background-position: right;
-  }
+}
 .hero-content {
   width: 464px;
   max-width: 100%;
@@ -132,16 +139,24 @@ body {
   color: var(--white);
   padding-left: 24%;
   padding-top: 12%;
-  background: linear-gradient(79.39deg, #111111 32.37%, rgba(17, 17, 17, 0) 72.02%);
+  background: linear-gradient(
+    79.39deg,
+    #111111 32.37%,
+    rgba(17, 17, 17, 0) 72.02%
+  );
   align-content: left;
 }
 .hero-description {
   font-size: 16px;
   font-weight: 400;
   color: var(--secondary-text);
-  display:block;
+  display: block;
   padding-left: 24%;
-  background: linear-gradient(79.39deg, #111111 32.37%, rgba(17, 17, 17, 0) 72.02%);
+  background: linear-gradient(
+    79.39deg,
+    #111111 32.37%,
+    rgba(17, 17, 17, 0) 72.02%
+  );
   padding-bottom: 242px;
 }
 /* Empty Library Message */
@@ -153,8 +168,8 @@ body {
   line-height: 36px;
 }
 /* Genre Section */
-.genre-filter{
-  color: #B7B7B7;
+.genre-filter {
+  color: #b7b7b7;
   height: 35px;
   background: #111111;
   border-radius: 8px;
@@ -248,19 +263,23 @@ body {
     transform: translate(-50%, -50%);
     z-index: 9999;
     display: none;
-}
-.spinner {
+  }
+  .spinner {
     width: 50px;
     height: 50px;
     border: 5px solid rgba(255, 255, 255, 0.3);
     border-top-color: #fff;
     border-radius: 50%;
     animation: spin 1s linear infinite;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
   .movie-container {
     padding: 300px 20px 20px;
     /* Azaltılmış üst boşluk */
@@ -304,19 +323,23 @@ body {
     transform: translate(-50%, -50%);
     z-index: 9999;
     display: none;
-}
-.spinner {
+  }
+  .spinner {
     width: 50px;
     height: 50px;
     border: 5px solid rgba(255, 255, 255, 0.3);
     border-top-color: #fff;
     border-radius: 50%;
     animation: spin 1s linear infinite;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
   .hero-description {
     font-size: 12px;
   }
@@ -335,10 +358,10 @@ body {
   }
 }
 
-  .rating-star {
-    width: 16px;
-    height: 16px;
-  }
+.rating-star {
+  width: 16px;
+  height: 16px;
+}
 /* desktop */
 @media screen and (min-width: 1280px) {
   .hero-title {
@@ -346,29 +369,28 @@ body {
     padding-left: 12%;
   }
   .search-button {
-  .hero-description {
-    font-size: 16px;
-    padding: 10px 20px;
-    padding-left: 12%;
+    .hero-description {
+      font-size: 16px;
+      padding: 10px 20px;
+      padding-left: 12%;
+    }
+    .footer-content {
+      margin-top: 20px;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 12px;
+    }
   }
-  .footer-content {
-    margin-top: 20px;
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 12px;
+  /* Kullanıcının az hareket tercih etmesi durumunda animasyonları azalt */
+  @media (prefers-reduced-motion: reduce) {
+    .search-button,
+    .nav-link,
+    .credits-link {
+      transition: none;
+    }
   }
 }
-/* Kullanıcının az hareket tercih etmesi durumunda animasyonları azalt */
-@media (prefers-reduced-motion: reduce) {
-  .search-button,
-  .nav-link,
-  .credits-link {
-    transition: none;
-  }
-}
-}
-
 
 /* YAGIZ BERK CSSS----------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -441,9 +463,8 @@ a {
 
 /* mobile  */
 
-
 body.dark-mode {
-background: var(--background);
+  background: var(--background);
   color: var(--white);
 }
 .mobil {
@@ -451,7 +472,7 @@ background: var(--background);
   color: #595959;
 }
 .dark-mode .mobil {
-background: var(--background);
+  background: var(--background);
   color: var(--white);
 }
 /* Toggle container */
@@ -897,7 +918,7 @@ background: var(--background);
   text-align: left;
   padding-left: 10px;
 }
-             
+
 /* tablet */
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .backdrop,
@@ -1422,8 +1443,7 @@ body.lightTheme .weeklyTrendsSeeAll {
   margin-left: 20px;
   margin-top: 24px;
   justify-content: space-between;
-  gap: 16px;  
-  
+  gap: 16px;
 }
 .MovieCard {
   width: 280px;
@@ -1432,9 +1452,48 @@ body.lightTheme .weeklyTrendsSeeAll {
   width: 100%;
   height: 100%;
   display: flex;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 92.16%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 63.48%,
+    rgba(0, 0, 0, 0.9) 92.16%
+  );
   position: relative;
+}
+.WTmodal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.WTmodal-content {
+  background: #fff;
+  padding: 20px;
+  width: 60%;
+  max-width: 600px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+}
+
+.WTmodal-content img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.WTclose {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 /* UPCOMING THIS MONTH*/
@@ -1459,17 +1518,17 @@ body.lightTheme .weeklyTrendsSeeAll {
   text-align: left;
   color: rgba(255, 255, 255, 1);
 }
-.DetailsTitle{
+.DetailsTitle {
   font-family: Roboto, sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 23.44px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 20px;
   margin-top: 24px;
 }
-.DetailsContent{
-  color: #B7B7B7;
+.DetailsContent {
+  color: #b7b7b7;
   font-family: Roboto, sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -1477,17 +1536,17 @@ body.lightTheme .weeklyTrendsSeeAll {
   margin-bottom: 12px;
 }
 .SpanDate {
-  color: #F87719;
+  color: #f87719;
   margin-left: 57px;
 }
 .SpanVotes {
-  color: #FFFFFF;
+  color: #ffffff;
   margin-left: 61px;
 }
 .SpanVote {
   color: #111111;
   font-size: 14px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 5px;
   padding-top: 1px;
   padding-bottom: 1px;
@@ -1495,15 +1554,15 @@ body.lightTheme .weeklyTrendsSeeAll {
   padding-right: 8px;
 }
 .SpanPopular {
-  color: #FFFFFF;
+  color: #ffffff;
   margin-left: 77px;
 }
-.SpanGenre{
-  color: #FFFFFF;
+.SpanGenre {
+  color: #ffffff;
   margin-left: 107px;
 }
 .DetailsAbout {
-  color: #B7B7B7;
+  color: #b7b7b7;
   font-family: Roboto, sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -1511,15 +1570,15 @@ body.lightTheme .weeklyTrendsSeeAll {
   margin-top: 8px;
   margin-bottom: 16px;
 }
-.AboutContent{
+.AboutContent {
   color: #f8f8f8;
   font-family: Roboto, sans-serif;
   font-weight: 400;
   font-size: 14px;
-  line-height: 20px; 
+  line-height: 20px;
 }
-.addToLibraryButton{
-   background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+.addToLibraryButton {
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   width: 140px;
   height: 38px;
   margin-top: 20px;
@@ -1660,7 +1719,7 @@ body.light-theme .footerContent {
   .HeroSpan {
     display: flex;
   }
-  .HeaderHeroButton{
+  .HeaderHeroButton {
     width: 120px;
     height: 40px;
     font-size: 14px;
@@ -1725,13 +1784,13 @@ body.light-theme .footerContent {
     height: 500px;
     object-fit: contain;
   }
-  
+
   .siteFooter {
     height: 150px;
   }
 
   .footerContent {
-    flex-direction: row; 
+    flex-direction: row;
     column-gap: 10px;
     font-size: 16px;
     line-height: 1.19;
@@ -1777,7 +1836,7 @@ body.light-theme .footerContent {
   .HomeHeroDiv {
     margin-top: 169px;
   }
-  .HeaderHeroTitle{
+  .HeaderHeroTitle {
     width: 464px;
     font-weight: 700;
     font-size: 64px;
@@ -1790,16 +1849,16 @@ body.light-theme .footerContent {
     line-height: 18.75px;
     margin-top: 16px;
   }
-   .HeroSpan {
+  .HeroSpan {
     display: flex;
   }
-  .HeaderHeroButton{
+  .HeaderHeroButton {
     width: 130px;
     height: 48px;
     font-size: 16px;
     margin-top: 32px;
   }
-  .SectionWeeklyTrends{
+  .SectionWeeklyTrends {
     width: 1280px;
   }
   #weeklyTrendsList {
@@ -1814,7 +1873,7 @@ body.light-theme .footerContent {
     font-size: 28px;
     line-height: 32.81px;
   }
-  .weeklyTrendsContent  {
+  .weeklyTrendsContent {
     width: 1280px;
     height: 100%;
     padding: 0 32px;
@@ -1822,14 +1881,14 @@ body.light-theme .footerContent {
     display: flex;
   }
   .MovieCard {
-     width: 395px;
+    width: 395px;
     height: 574px;
   }
   .MovieCardİmg {
     width: 395px;
     height: 574px;
   }
-  .sectionUpComing{
+  .sectionUpComing {
     width: 1280px;
     margin-top: 60px;
   }
@@ -1837,7 +1896,7 @@ body.light-theme .footerContent {
     font-size: 28px;
     line-height: 32.81px;
   }
-  .movieInfoContent{
+  .movieInfoContent {
     flex-direction: row;
   }
   .UpdateImg {
@@ -1948,13 +2007,13 @@ body.light-theme .footerContent {
   gap: 20px;
   padding: 20px;
   justify-items: center;
-  list-style: none; 
+  list-style: none;
 }
 
 .memberPhoto {
   width: 120px;
   height: 120px;
-  border: 2px solid #f0f0f0; 
+  border: 2px solid #f0f0f0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   transition: all 0.3s ease-in-out;
@@ -1979,7 +2038,7 @@ body.light-theme .footerContent {
   margin-top: 10px;
   color: #333;
   white-space: nowrap;
-  word-wrap: break-word; 
+  word-wrap: break-word;
 }
 
 .memberRole {
@@ -1992,7 +2051,6 @@ body.light-theme .footerContent {
 body.light-theme .memberName {
   color: black;
 }
-
 
 .footerHeartIcon {
   margin-left: 10px;
@@ -2007,7 +2065,10 @@ body.light-theme .memberName {
   --grey: #b7b7b7;
   --orange: #f87719;
   --secondary-text: #f8f8f8;
-  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", "Source Han Sans CN", sans-serif;
+  --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Ubuntu, 'Helvetica Neue', Helvetica, Arial, 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei',
+    'Source Han Sans CN', sans-serif;
 }
 * {
   margin: 0;
@@ -2053,7 +2114,7 @@ body {
   object-fit: contain;
 }
 .nav-container {
-  display:contents;
+  display: contents;
   gap: 20px;
 }
 .nav-links {
@@ -2091,8 +2152,12 @@ body {
   animation: spin 1s linear infinite;
 }
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .active-link {
   color: var(--orange);
@@ -2120,7 +2185,7 @@ body {
   background-image: url(../images/hero.png);
   background-repeat: no-repeat;
   background-position: right;
-  }
+}
 .hero-content {
   width: 464px;
   max-width: 100%;
@@ -2135,16 +2200,24 @@ body {
   color: var(--white);
   padding-left: 24%;
   padding-top: 12%;
-  background: linear-gradient(79.39deg, #111111 32.37%, rgba(17, 17, 17, 0) 72.02%);
+  background: linear-gradient(
+    79.39deg,
+    #111111 32.37%,
+    rgba(17, 17, 17, 0) 72.02%
+  );
   align-content: left;
 }
 .hero-description {
   font-size: 16px;
   font-weight: 400;
   color: var(--secondary-text);
-  display:block;
+  display: block;
   padding-left: 24%;
-  background: linear-gradient(79.39deg, #111111 32.37%, rgba(17, 17, 17, 0) 72.02%);
+  background: linear-gradient(
+    79.39deg,
+    #111111 32.37%,
+    rgba(17, 17, 17, 0) 72.02%
+  );
   padding-bottom: 242px;
 }
 /* Empty Library Message */
@@ -2156,8 +2229,8 @@ body {
   line-height: 36px;
 }
 /* Genre Section */
-.genre-filter{
-  color: #B7B7B7;
+.genre-filter {
+  color: #b7b7b7;
   height: 35px;
   background: #111111;
   border-radius: 8px;
@@ -2251,19 +2324,23 @@ body {
     transform: translate(-50%, -50%);
     z-index: 9999;
     display: none;
-}
-.spinner {
+  }
+  .spinner {
     width: 50px;
     height: 50px;
     border: 5px solid rgba(255, 255, 255, 0.3);
     border-top-color: #fff;
     border-radius: 50%;
     animation: spin 1s linear infinite;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
   .movie-container {
     padding: 300px 20px 20px;
     /* Azaltılmış üst boşluk */
@@ -2307,19 +2384,23 @@ body {
     transform: translate(-50%, -50%);
     z-index: 9999;
     display: none;
-}
-.spinner {
+  }
+  .spinner {
     width: 50px;
     height: 50px;
     border: 5px solid rgba(255, 255, 255, 0.3);
     border-top-color: #fff;
     border-radius: 50%;
     animation: spin 1s linear infinite;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
   .hero-description {
     font-size: 12px;
   }
@@ -2338,10 +2419,10 @@ body {
   }
 }
 
-  .rating-star {
-    width: 16px;
-    height: 16px;
-  }
+.rating-star {
+  width: 16px;
+  height: 16px;
+}
 /* desktop */
 @media screen and (min-width: 1280px) {
   .hero-title {
@@ -2349,29 +2430,28 @@ body {
     padding-left: 12%;
   }
   .search-button {
-  .hero-description {
-    font-size: 16px;
-    padding: 10px 20px;
-    padding-left: 12%;
+    .hero-description {
+      font-size: 16px;
+      padding: 10px 20px;
+      padding-left: 12%;
+    }
+    .footer-content {
+      margin-top: 20px;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 12px;
+    }
   }
-  .footer-content {
-    margin-top: 20px;
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 12px;
+  /* Kullanıcının az hareket tercih etmesi durumunda animasyonları azalt */
+  @media (prefers-reduced-motion: reduce) {
+    .search-button,
+    .nav-link,
+    .credits-link {
+      transition: none;
+    }
   }
 }
-/* Kullanıcının az hareket tercih etmesi durumunda animasyonları azalt */
-@media (prefers-reduced-motion: reduce) {
-  .search-button,
-  .nav-link,
-  .credits-link {
-    transition: none;
-  }
-}
-}
-
 
 /* YAGIZ BERK CSSS----------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -2443,7 +2523,6 @@ a {
 }
 
 /* mobile  */
-
 
 body.dark-mode {
   background-color: #111111;
@@ -2900,7 +2979,7 @@ body.dark-mode {
   text-align: left;
   padding-left: 10px;
 }
-             
+
 /* tablet */
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .backdrop,

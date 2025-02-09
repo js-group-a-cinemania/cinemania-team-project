@@ -77,7 +77,9 @@
             <ul class="nav-list">
               <li><a href="./index.html" class="nav-link">HOME</a></li>
               <li><a href="./catalog.html" class="nav-link">CATALOG</a></li>
-              <li><a href="./mylibrary.html" class="nav-link">MY LIBRARY</a></li>
+              <li>
+                <a href="./mylibrary.html" class="nav-link">MY LIBRARY</a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -107,6 +109,10 @@
         <button class="weeklyTrendsSeeAll" id="viewAll">See all</button>
       </div>
       <div class="weeklyTrendsContent" id="trendMovies"></div>
+      <!--  MODAL -->
+      <!-- <div id="WTmovieModal" class="WTmodal">
+        <div class="WTmodal-content"></div>
+      </div> -->
     </section>
 
     <!-- UPCOMING THIS MONTH -->
@@ -116,7 +122,6 @@
         <div class="movieDetailsContainer">
           <h2 class="sectionUpComingTitle">UPCOMING THIS MONTH</h2>
           <div class="movieInfoContent"></div>
-          </div>
         </div>
       </div>
     </section>
@@ -208,8 +213,8 @@
     </footer>
 
     <script src="./js/footer.js"></script>
-    <script src="./js/weekly-trends.js"></script>
-    <script src="./js/upcoming.js"></script>
+    <script type="module" src="./js/weekly-trends.js"></script>
+    <script type="module" src="./js/upcoming.js"></script>
 
     <!-- <script type="module" src="/src/main.js"></script> -->
   </body>
