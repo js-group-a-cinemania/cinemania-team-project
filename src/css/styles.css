@@ -443,8 +443,8 @@ a {
 
 
 body.dark-mode {
-  background-color: #111111;
-  color: white;
+background: var(--background);
+  color: var(--white);
 }
 .mobil {
   background: #ffffff;
