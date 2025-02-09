@@ -1,13 +1,216 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/styles.css"/>
-    <title>CİNEMANİA</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cinemania</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <!-- TOGGLE BÖLÜMÜ -->
+    <div class="toggle-container">
+      <input type="checkbox" id="darkmode-toggle" />
+      <label for="darkmode-toggle" class="toggle-label">
+        <span class="toggle-icon sun"
+          ><svg
+            width="11"
+            height="10"
+            viewBox="0 0 11 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.73643 7.86256C7.36422 7.86256 8.6838 6.58046 8.6838 4.99892C8.6838 3.41738 7.36422 2.13528 5.73643 2.13528C4.10864 2.13528 2.78906 3.41738 2.78906 4.99892C2.78906 6.58046 4.10864 7.86256 5.73643 7.86256Z"
+              stroke="white"
+              stroke-width="0.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M8.98379 1.84669L9.044 1.78819M2.4301 8.21419L2.49031 8.15569M5.73705 0.53719V0.50119M5.73705 9.50119V9.46519M1.14252 5.00119H1.10547M10.3686 5.00119H10.3316M2.49031 1.84669L2.4301 1.78819M9.044 8.21419L8.98379 8.15569"
+              stroke="white"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            /></svg
+        ></span>
+        <span class="toggle-icon moon"
+          ><svg
+            width="11"
+            height="11"
+            viewBox="0 0 11 11"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.950868 5.83081C1.12805 8.34079 3.27888 10.3829 5.85299 10.495C7.66914 10.573 9.29334 9.73469 10.2679 8.4139C10.6714 7.87291 10.4549 7.51226 9.7806 7.6341C9.45084 7.69258 9.11123 7.71695 8.75686 7.70233C6.3501 7.60486 4.38137 5.61149 4.37153 3.25747C4.36661 2.62388 4.49949 2.02441 4.74066 1.47855C5.00644 0.874205 4.68652 0.586653 4.0713 0.844962C2.12226 1.65888 0.788448 3.60351 0.950868 5.83081Z"
+              stroke="white"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <span class="toggle-ball"></span>
+      </label>
+    </div>
+    <!-- TOGGLE BÖLÜM SONU -->
+
+    <!-- HEADER BÖLÜMÜ -->
+    <header class="page-header">
+      <div class="container">
+        <div class="header-logo">
+          <a href="index.html"
+            ><img src="./img/home-image.png" alt="Logo" />
+            <span class="logo-text">Cinemania</span></a
+          >
+        </div>
+        <div class="menu">
+          <a href="" id="menu-toggle" class="menu-text">MENU</a>
+        </div>
+        <div class="nav-list">
+          <nav class="nav-list">
+            <ul class="nav-list">
+              <li><a href="homepage" class="nav-link">HOME</a></li>
+              <li><a href="catalog.html" class="nav-link">CATALOG</a></li>
+              <li><a href="mylibrary.html" class="nav-link">MY LIBRARY</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION HERO -->
+
+    <section class="SectionHero">
+      <div class="HomeHeroDiv">
+        <h1 class="HeaderHeroTitle">Let’s Make Your Own Cinema</h1>
+        <p class="HeaderHeroContent">
+          Is a guide to creating a personalized movie theater experience. You'll
+          need a projector, screen, and speakers.<span class="HeroSpan"
+            >Decorate your space, choose your films, and stock up on snacks for
+            the full experience.</span
+          >
+        </p>
+        <button type="button" class="HeaderHeroButton">Get Started</button>
+      </div>
+    </section>
+
+    <!-- WEEKLY TRENDS -->
+    <section class="SectionWeeklyTrends">
+      <div id="weeklyTrendsList">
+        <h3 class="weeklyTrendsTitle">WEEKLY TRENDS</h3>
+        <button class="weeklyTrendsSeeAll" id="viewAll">See all</button>
+      </div>
+      <div class="weeklyTrendsContent" id="trendMovies"></div>
+    </section>
+
+    <!-- UPCOMING THIS MONTH -->
+
+    <section class="sectionUpComing">
+      <div class="sectionUpComingDiv">
+        <div class="movieDetailsContainer">
+          <h2 class="sectionUpComingTitle">UPCOMING THIS MONTH</h2>
+          <div class="movieInfoContent"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <footer class="siteFooter">
+        <div class="container footerContainer">
+          <div class="footerContent">
+            <div class="footerText">&copy; 2023 | All Rights Reserved |</div>
+            <div class="footerText">
+              Developed with
+              <svg class="footerHeartIcon" width="14" height="14">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 13.3765L6.02 12.4062C2.38 9.21808 0 7.06957 0 4.4359C0 2.28739 1.68 0.624023 3.85 0.624023C5.04 0.624023 6.23 1.17848 7 2.07947C7.77 1.17848 8.96 0.624023 10.15 0.624023C12.32 0.624023 14 2.28739 14 4.4359C14 7.06957 11.62 9.21808 7.98 12.4062L7 13.3765Z"
+                    fill="#F87719"
+                  />
+                </svg>
+              </svg>
+              by
+              <button class="footerButton" type="button">GoIT Students</button>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- desing by goit students -->
+
+      <div id="modalTeam" class="modalTeamContainer">
+        <div class="modalTeamContent">
+          <span class="modalCloseButton">&times;</span>
+          <h1 class="modalTitle">Our Team</h1>
+          <ul class="teamList">
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/ceren.jpg"
+                alt="Ceren Cetin Baiden"
+              />
+              <h2 class="memberName">Ceren Cetin Baiden</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/berk.jpg"
+                alt="Berk Yagiz Karan"
+              />
+              <h2 class="memberName">Berk Yagiz Karan</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/furkan.jpg"
+                alt="Izzet Furkan Keser"
+              />
+              <h2 class="memberName">Izzet Furkan Keser</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/orkun.jpg"
+                alt="Orkun Korcak"
+              />
+              <h2 class="memberName">Orkun Korcak</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+            <li class="teamMember">
+              <img
+                class="memberPhoto"
+                src="./img/omer.jpg"
+                alt="Omer Ferkan Kemik"
+              />
+              <h2 class="memberName">Omer Ferkan Kemik</h2>
+              <p class="memberRole">Developer</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/footer.js"></script>
+    <script type="module" src="./js/weekly-trends.js"></script>
+    <script type="module" src="./js/upcoming.js"></script>
+
+    <!-- <script type="module" src="/src/main.js"></script> -->
   </body>
 </html>
