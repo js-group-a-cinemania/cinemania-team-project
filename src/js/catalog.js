@@ -57,11 +57,11 @@ function displayHeroMovie(movie) {
   const container = document.querySelector('.hero-text-container');
   container.innerHTML = `
     <div class="image-container">
-        <img class="hero-img" src="${IMG_URL}${backdrop_path}" alt="${title}">
+        <img class="section-hero-img" src="${IMG_URL}${backdrop_path}" alt="${title}">
         <div class="gradient-container"></div>
     </div>
-    <div class="hero-content">
-        <h1 class="title hero-title">${title}</h1>
+    <div class="section-hero-content">
+        <h1 class="title section-hero-title">${title}</h1>
         <p class="star-rating-hero">${starRatingCalc(vote_average)}</p>
         <p class="text hero-text">${overview}</p>
         <ul class="btn-list">
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchInput = document.getElementById('form-input');
   const searchInput2 = document.querySelector('.search-input2');
   const closeIcon = document.querySelector('.close-icon');
-  const movieContainer = document.querySelector('.movie-container');
+  const movieContainer = document.querySelector('.catalog-movie-container');
 
   searchForm.addEventListener('submit', async function (event) {
     event.preventDefault();
@@ -190,3 +190,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //!MOVIE SEARCH SONU
+
+
+
+
+

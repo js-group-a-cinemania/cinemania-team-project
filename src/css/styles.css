@@ -37,10 +37,6 @@ img {
   height: auto;
 }
 
-address {
-  font-style: normal;
-}
-
 a {
   text-decoration: none;
   color: inherit;
@@ -72,7 +68,7 @@ a {
 /* mobile  */
 
 body {
-  transition: background 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
   font-family: 'Roboto', serif;
   color: #595959;
   font-size: 14px;
@@ -191,7 +187,7 @@ body.dark-mode {
   border: 0;
   outline: none;
 }
-.hero-img {
+.section-hero-img {
   position: absolute;
   top: 58px;
   right: 0;
@@ -208,7 +204,7 @@ body.dark-mode {
   color: #f8f8f8;
   font-size: 10px;
 }
-.hero-content {
+.section-hero-content {
   position: absolute;
   top: 100px;
   left: 50px;
@@ -336,7 +332,7 @@ body.dark-mode {
   line-height: 16.41px;
   text-align: center;
 }
-.search-button {
+.catalog-search-button {
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -354,11 +350,11 @@ body.dark-mode {
   justify-content: center;
   transition: stroke 0.3s all;
 }
-.search-button:hover {
+.catalog-search-button:hover {
   background: transparent;
   border: 1px solid orange;
 }
-.search-button:hover + .search-icon {
+.catalog-search-button:hover + .search-icon {
   stroke: orange;
 }
 
@@ -502,7 +498,7 @@ body.dark-mode {
   color: #f87719;
 }
 
-.movie-container {
+.catalog-movie-container {
   margin-top: 70px;
   font-size: 20px;
   font-weight: 400;
@@ -533,7 +529,7 @@ body.dark-mode {
   text-align: left;
   padding-left: 10px;
 }
-
+             
 /* tablet */
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .backdrop,
@@ -589,7 +585,7 @@ body.dark-mode {
     border: 0;
     outline: none;
   }
-  .hero-img {
+  .section-hero-img {
     position: absolute;
     top: 48px;
     right: 0;
@@ -606,7 +602,7 @@ body.dark-mode {
     color: #f8f8f8;
     font-size: 12px;
   }
-  .hero-content {
+  .section-hero-content {
     position: absolute;
     top: 100px;
     left: 50px;
@@ -691,7 +687,7 @@ body.dark-mode {
   .gallery-movies {
     row-gap: 16px;
   }
-  .movie-container {
+  .catalog-movie-container {
     margin-top: 100px;
     font-size: 24px;
     font-weight: 400;
@@ -762,7 +758,7 @@ body.dark-mode {
     border: 0;
     outline: none;
   }
-  .hero-img {
+  .section-hero-img {
     position: absolute;
     top: 48px;
     right: 0;
@@ -778,7 +774,7 @@ body.dark-mode {
     color: #f8f8f8;
     font-size: 15px;
   }
-  .hero-content {
+  .section-hero-content {
     position: absolute;
     margin: 0 auto;
     left: 15%;
@@ -810,7 +806,7 @@ body.dark-mode {
   .gallery-movies-title {
     margin-bottom: 3px;
   }
-  .movie-container {
+  .catalog-movie-container {
     margin-top: 100px;
     font-size: 32px;
     font-weight: 400;
