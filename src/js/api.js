@@ -14,15 +14,15 @@ const searchParams = new URLSearchParams({
 });
 const apiUrl = `https://api.themoviedb.org/3/trending/all/day?${searchParams}`;
 
-const fetchTrendingMovies = async () => {
+export const fetchTrendingMovies = async () => {
   try {
     const response = await axios.get(apiUrl, options);
-
-    console.log(response.data.results);
+    return response.data;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    return null;
   }
 };
 
 // Fonksiyonu çağırma
-fetchTrendingMovies();
+export default fetchTrendingMovies;
+// console.log(fetchTrendingMovies())
