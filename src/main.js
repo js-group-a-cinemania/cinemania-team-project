@@ -4,3 +4,4 @@ import "./js/library.js";
 import "./js/filters.js";
 import "./js/scrollUp.js";
 import "./js/loader.js";
+import "./js/catalog.js";
