@@ -4,10 +4,7 @@
   --grey: #b7b7b7;
   --orange: #f87719;
   --secondary-text: #f8f8f8;
-  --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Ubuntu, 'Helvetica Neue', Helvetica, Arial, 'PingFang SC',
-    'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei',
-    'Source Han Sans CN', sans-serif;
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", "Source Han Sans CN", sans-serif;
 }
 * {
   margin: 0;
@@ -17,11 +14,60 @@
 body {
   font-family: var(--default-font-family);
   line-height: 1.5;
-  color: var(--white);
+  color: #595959;
   background: var(--white);
   transition: background-color 0.3s, color 0.3s;
   font-size: 14px;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  box-sizing: border-box;
+  font-family: var(--dmsans);
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .library-container {
   display: flex;
   flex-direction: column;
@@ -56,7 +102,7 @@ body {
   display: contents;
   gap: 20px;
 }
-.nav-links {
+.nav-list {
   display: flex;
   align-content: center;
   gap: 40px;
@@ -68,6 +114,7 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   transition: color 0.3s ease;
+  color: #595959;
 }
 .nav-link:hover,
 .nav-link:focus {
@@ -394,49 +441,6 @@ body {
 
 /* YAGIZ BERK CSSS----------------------------------------------------------------------------------------------------------------------------------- */
 
-/* Reset css */
-html {
-  box-sizing: border-box;
-  font-family: var(--dmsans);
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-button {
-  cursor: pointer;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -602,7 +606,7 @@ body.dark-mode {
   height: 69px;
 }
 .star-rating {
-  font-size: 20px;
+  font-size: 14px;
   color: orange;
   font-weight: bold;
   position: absolute;
@@ -786,7 +790,7 @@ body.dark-mode {
   border-radius: 5px;
 }
 .gallery-movies-wrap {
-  width: 150px;
+  width: 200px;
   height: 20px;
   position: absolute;
   bottom: 10px;
@@ -837,6 +841,8 @@ body.dark-mode {
   font-weight: 400;
   position: absolute;
   bottom: 30px;
+  width: 250px;
+  height: 20px;
 }
 
 .gallery-movies-details {
@@ -940,7 +946,7 @@ body.dark-mode {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .pagination-btn {
@@ -993,6 +999,7 @@ body.dark-mode {
   .header-logo,
   .logo-text {
     display: block;
+    color: #282828;
   }
   .header-logo img {
     width: 48px;
@@ -1168,7 +1175,7 @@ body.dark-mode {
   }
 
   .star-rating {
-    font-size: 20px;
+    font-size: 18px;
     color: orange;
     font-weight: bold;
     position: absolute;
@@ -1305,7 +1312,7 @@ body.dark-mode {
     letter-spacing: 0%;
   }
   .star-rating {
-    font-size: 25px;
+    font-size: 20px;
     color: orange;
     font-weight: bold;
     position: absolute;
@@ -1321,56 +1328,7 @@ body.dark-mode {
 }
 
 /* CEREN ORKUN CSS  */
-/* Reset css */
-html {
-  box-sizing: border-box;
-  font-family: var(--dmsans);
-}
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-}
-
-button {
-  cursor: pointer;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-address {
-  font-style: normal;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-body {
-  background-color: #000000;
-  font-family: 'Roboto', sans-serif;
-}
 /* mobile  */
 .HeaderDiv {
   display: flex;
@@ -1484,12 +1442,6 @@ body {
 
 /* WEEKLY TRENDS START*/
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .bodyStyle {
   background-color: rgba(17, 17, 17, 1);
 }
@@ -1548,8 +1500,8 @@ body.lightTheme .weeklyTrendsSeeAll {
   margin-left: 20px;
   margin-top: 24px;
   justify-content: space-between;
-  gap: 16px;  
-  
+  gap: 16px;
+
 }
 .MovieCard {
   width: 280px;
@@ -1564,42 +1516,7 @@ body.lightTheme .weeklyTrendsSeeAll {
     rgba(0, 0, 0, 0.9) 92.16%
   );
   position: relative;
-}
-.WTmodal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.WTmodal-content {
-  background: #fff;
-  padding: 20px;
-  width: 60%;
-  max-width: 600px;
-  border-radius: 8px;
-  text-align: center;
-  position: relative;
-}
-
-.WTmodal-content img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.WTclose {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
 }
 
 /* UPCOMING THIS MONTH*/
@@ -2171,10 +2088,7 @@ body.light-theme .memberName {
   --grey: #b7b7b7;
   --orange: #f87719;
   --secondary-text: #f8f8f8;
-  --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Ubuntu, 'Helvetica Neue', Helvetica, Arial, 'PingFang SC',
-    'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei',
-    'Source Han Sans CN', sans-serif;
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", "Source Han Sans CN", sans-serif;
 }
 * {
   margin: 0;
@@ -2188,7 +2102,7 @@ body {
   background: var(--background);
   transition: background-color 0.3s, color 0.3s;
   font-size: 14px;
-}
+} */
 .library-container {
   display: flex;
   flex-direction: column;
@@ -2559,6 +2473,7 @@ body {
   }
 }
 
+
 /* YAGIZ BERK CSSS----------------------------------------------------------------------------------------------------------------------------------- */
 
 /* Reset css */
@@ -2629,6 +2544,7 @@ a {
 }
 
 /* mobile  */
+
 
 body.dark-mode {
   background-color: #111111;
