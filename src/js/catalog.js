@@ -73,7 +73,7 @@ function displayHeroMovie(movie) {
   `;
 }
 
-let genreMap = {}; // Türleri saklamak için nesne
+let genreMap = {};
 
 // **Film türlerini çek ve kaydet**
 async function fetchGenres() {
@@ -84,7 +84,7 @@ async function fetchGenres() {
     const data = await response.json();
 
     data.genres.forEach(genre => {
-      genreMap[genre.id] = genre.name; // { 28: "Action", 12: "Adventure" ... }
+      genreMap[genre.id] = genre.name;
     });
   } catch (error) {
     console.error('Film türleri alınırken hata oluştu:', error);
@@ -94,7 +94,7 @@ async function fetchGenres() {
 // **Trend Filmleri Listele**
 async function fetchTrendingMovies() {
   try {
-    await fetchGenres(); // Önce türleri al
+    await fetchGenres();
     const response = await fetch(
       `${baseUrl}/trending/movie/week?api_key=${apiKey}`
     );
@@ -217,14 +217,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //!MOVIE SEARCH SONU
 
+
+
 //! PAGINATION KISMI
 
 const paginationContainer = document.getElementById('pagination-container');
 let currentPage = 1;
-const maxPagesToFetch = 500; // En fazla çekilecek sayfa sınırı
-let totalPages = 1; // API'den toplam sayfa sayısı
+const maxPagesToFetch = 500;
+let totalPages = 1;
 
-// 📌 Sayfaları getir
+
 async function fetchMovies(page = 1) {
   try {
     if (page > maxPagesToFetch) {
@@ -237,19 +239,18 @@ async function fetchMovies(page = 1) {
     );
     const data = await response.json();
 
-    totalPages = Math.min(data.total_pages, maxPagesToFetch); // 500 sınırını uygula
-    displayMovies(data.results); // Filmleri göster
-    renderPagination(); // Sayfalama butonlarını güncelle
+    totalPages = Math.min(data.total_pages, maxPagesToFetch);
+    displayMovies(data.results);
+    renderPagination();
   } catch (error) {
     console.error("API'den veri alınırken hata oluştu:", error);
   }
 }
 
-// 📌 Sayfalama Butonlarını Çiz
-function renderPagination() {
-  paginationContainer.innerHTML = ''; // Önce temizle
 
-  // İlk sayfaya git (<<) butonu, yalnızca 1. sayfada görünmesin
+function renderPagination() {
+  paginationContainer.innerHTML = '';
+
   let paginationHTML = ``;
   if (currentPage > 1) {
     paginationHTML += `
@@ -257,7 +258,7 @@ function renderPagination() {
     `;
   }
 
-  // Önceki sayfa butonu (<), yalnızca 1. sayfada görünmesin
+
   if (currentPage > 1) {
     paginationHTML += `
       <button class="pagination-btn" onclick="changePage(${
@@ -266,7 +267,7 @@ function renderPagination() {
     `;
   }
 
-  // Ortada, 1 ve son sayfa (500) kontrolü
+
   if (currentPage > 3) {
     paginationHTML += `<span class="pagination-dots">...</span>`;
   }
@@ -287,7 +288,7 @@ function renderPagination() {
     paginationHTML += `<span class="pagination-dots">...</span>`;
   }
 
-  // Sonraki sayfa butonu (>), yalnızca son sayfada görünmesin
+
   if (currentPage < totalPages) {
     paginationHTML += `
       <button class="pagination-btn" onclick="changePage(${
@@ -296,7 +297,7 @@ function renderPagination() {
     `;
   }
 
-  // Son sayfaya git (>>) butonu, yalnızca son sayfada görünmesin
+
   if (currentPage < totalPages) {
     paginationHTML += `
       <button class="pagination-btn" onclick="changePage(${totalPages})">&raquo;</button>
@@ -306,22 +307,16 @@ function renderPagination() {
   paginationContainer.innerHTML = paginationHTML;
 }
 
-// 📌 Sayfa Değiştirme
+
 window.changePage = function (page) {
-  if (page < 1 || page > totalPages) return; // Geçersiz sayfaları engelle
+  if (page < 1 || page > totalPages) return;
   currentPage = page;
-  fetchMovies(page); // ✅ Yeni filmleri getir
+  fetchMovies(page);
 };
 
-// 📌 Sayfa Yüklendiğinde İlk Sayfayı Getir
+
 document.addEventListener('DOMContentLoaded', () => {
   fetchMovies();
 });
 
 //! PAGINATION SONU
-
-
-
-
-
-
