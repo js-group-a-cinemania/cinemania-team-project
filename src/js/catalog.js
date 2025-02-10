@@ -57,11 +57,11 @@ function displayHeroMovie(movie) {
   const container = document.querySelector('.hero-text-container');
   container.innerHTML = `
     <div class="image-container">
-        <img class="hero-img" src="${IMG_URL}${backdrop_path}" alt="${title}">
+        <img class="section-hero-img" src="${IMG_URL}${backdrop_path}" alt="${title}">
         <div class="gradient-container"></div>
     </div>
-    <div class="hero-content">
-        <h1 class="title hero-title">${title}</h1>
+    <div class="section-hero-content">
+        <h1 class="title section-hero-title">${title}</h1>
         <p class="star-rating-hero">${starRatingCalc(vote_average)}</p>
         <p class="text hero-text">${overview}</p>
         <ul class="btn-list">
@@ -73,23 +73,39 @@ function displayHeroMovie(movie) {
   `;
 }
 
-// ! **Trend Filmleri Listeye Ekle**
+let genreMap = {};
 
+// **Film türlerini çek ve kaydet**
+async function fetchGenres() {
+  try {
+    const response = await fetch(
+      `${baseUrl}/genre/movie/list?api_key=${apiKey}`
+    );
+    const data = await response.json();
+
+    data.genres.forEach(genre => {
+      genreMap[genre.id] = genre.name;
+    });
+  } catch (error) {
+    console.error('Film türleri alınırken hata oluştu:', error);
+  }
+}
+
+// **Trend Filmleri Listele**
 async function fetchTrendingMovies() {
   try {
+    await fetchGenres();
     const response = await fetch(
       `${baseUrl}/trending/movie/week?api_key=${apiKey}`
     );
     const data = await response.json();
     displayMovies(data.results);
-
-    if (movie.length === 0) {
-    }
   } catch (error) {
     console.error('Hata:', error);
   }
 }
 
+// **Filmleri Ekrana Yazdır**
 function displayMovies(movies) {
   const container = document.querySelector('.gallery-movies');
   container.innerHTML = movies
@@ -98,6 +114,11 @@ function displayMovies(movies) {
         const year = release_date ? release_date.split('-')[0] : 'Unknown';
         const starRating = starRatingCalc(vote_average);
 
+        // **Tür ID'lerini isimlere çevir**
+        const genres = genre_ids
+          .map(id => genreMap[id] || 'Unknown')
+          .join(', ');
+
         return `
         <li class="gallery-movies-item" data-id="${id}">
           <img class="gallery-movies-img" src="https://image.tmdb.org/t/p/original/${poster_path}" alt="${title}" loading="lazy">
@@ -105,10 +126,10 @@ function displayMovies(movies) {
           <div class="gallery-movies-description">
             <h3 class="gallery-movies-title">${title}</h3>
             <div class="gallery-movies-wrap">
-              <p class="gallery-movies-details">${genre_ids} | ${year}</p>
-              <div class="star-rating">${starRating}</div>
+              <p class="gallery-movies-details">${genres} | ${year}</p>
             </div>
           </div>
+          <div class="star-rating">${starRating}</div>
         </li>
       `;
       }
@@ -116,11 +137,16 @@ function displayMovies(movies) {
     .join('');
 }
 
-// ! **Yıldız Puanı Hesapla**
+// **Yıldız Puanı Hesapla**
 function starRatingCalc(vote_average) {
   const stars = Math.round(vote_average / 2);
   return '★'.repeat(stars) + '☆'.repeat(5 - stars);
 }
+
+// **Sayfa Yüklendiğinde Çalıştır**
+document.addEventListener('DOMContentLoaded', () => {
+  fetchTrendingMovies();
+});
 
 //! MOBIL MENU
 document.addEventListener('DOMContentLoaded', function () {
@@ -156,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchInput = document.getElementById('form-input');
   const searchInput2 = document.querySelector('.search-input2');
   const closeIcon = document.querySelector('.close-icon');
-  const movieContainer = document.querySelector('.movie-container');
+  const movieContainer = document.querySelector('.catalog-movie-container');
 
   searchForm.addEventListener('submit', async function (event) {
     event.preventDefault();
@@ -190,3 +216,107 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //!MOVIE SEARCH SONU
+
+
+
+//! PAGINATION KISMI
+
+const paginationContainer = document.getElementById('pagination-container');
+let currentPage = 1;
+const maxPagesToFetch = 500;
+let totalPages = 1;
+
+
+async function fetchMovies(page = 1) {
+  try {
+    if (page > maxPagesToFetch) {
+      console.error(`Maksimum ${maxPagesToFetch} sayfayı geçemezsiniz.`);
+      return;
+    }
+
+    const response = await fetch(
+      `${baseUrl}/movie/popular?api_key=${apiKey}&page=${page}`
+    );
+    const data = await response.json();
+
+    totalPages = Math.min(data.total_pages, maxPagesToFetch);
+    displayMovies(data.results);
+    renderPagination();
+  } catch (error) {
+    console.error("API'den veri alınırken hata oluştu:", error);
+  }
+}
+
+
+function renderPagination() {
+  paginationContainer.innerHTML = '';
+
+  let paginationHTML = ``;
+  if (currentPage > 1) {
+    paginationHTML += `
+      <button class="pagination-btn" onclick="changePage(1)">&laquo;</button>
+    `;
+  }
+
+
+  if (currentPage > 1) {
+    paginationHTML += `
+      <button class="pagination-btn" onclick="changePage(${
+        currentPage - 1
+      })">&lt;</button>
+    `;
+  }
+
+
+  if (currentPage > 3) {
+    paginationHTML += `<span class="pagination-dots">...</span>`;
+  }
+
+  for (
+    let i = Math.max(1, currentPage - 1);
+    i <= Math.min(totalPages, currentPage + 1);
+    i++
+  ) {
+    paginationHTML += `
+      <button class="pagination-btn ${
+        currentPage === i ? 'active' : ''
+      }" onclick="changePage(${i})">${i}</button>
+    `;
+  }
+
+  if (currentPage < totalPages - 2) {
+    paginationHTML += `<span class="pagination-dots">...</span>`;
+  }
+
+
+  if (currentPage < totalPages) {
+    paginationHTML += `
+      <button class="pagination-btn" onclick="changePage(${
+        currentPage + 1
+      })">&gt;</button>
+    `;
+  }
+
+
+  if (currentPage < totalPages) {
+    paginationHTML += `
+      <button class="pagination-btn" onclick="changePage(${totalPages})">&raquo;</button>
+    `;
+  }
+
+  paginationContainer.innerHTML = paginationHTML;
+}
+
+
+window.changePage = function (page) {
+  if (page < 1 || page > totalPages) return;
+  currentPage = page;
+  fetchMovies(page);
+};
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchMovies();
+});
+
+//! PAGINATION SONU
