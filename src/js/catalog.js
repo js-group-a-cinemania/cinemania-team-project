@@ -339,19 +339,16 @@ const maxPagesToFetch = 500;
 let totalPages = 1;
 
 
-async function fetchMovies(page = 1, year = '') {
+async function fetchMovies(page = 1) {
   try {
     if (page > maxPagesToFetch) {
       console.error(`Maksimum ${maxPagesToFetch} sayfayı geçemezsiniz.`);
       return;
     }
 
-    let url = `${baseUrl}/discover/movie?api_key=${apiKey}&page=${page}`;
-    if (year) {
-      url += `&primary_release_year=${year}`;
-    }
-
-    const response = await fetch(url);
+    const response = await fetch(
+      `${baseUrl}/movie/popular?api_key=${apiKey}&page=${page}`
+    );
     const data = await response.json();
 
     totalPages = Math.min(data.total_pages, maxPagesToFetch);
@@ -361,7 +358,6 @@ async function fetchMovies(page = 1, year = '') {
     console.error("API'den veri alınırken hata oluştu:", error);
   }
 }
-
 
 
 function renderPagination() {
@@ -436,50 +432,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //! PAGINATION SONU
-
-
-
-//! YILLARA GÖRE MOVIE SEARCH
-
-const yearDropdown = document.querySelector('.year-dropdown');
-
-async function fetchYears() {
-  try {
-    let years = new Set();
-    for (let page = 1; page <= 5; page++) {
-      const response = await fetch(
-        `${baseUrl}/movie/popular?api_key=${apiKey}&page=${page}`
-      );
-      const data = await response.json();
-
-      data.results.forEach(movie => {
-        if (movie.release_date) {
-          const year = movie.release_date.split('-')[0];
-          years.add(year);
-        }
-      });
-    }
-
-    populateYearDropdown([...years].sort((a, b) => b - a));
-  } catch (error) {
-    console.error('Yıllar alınırken hata oluştu:', error);
-  }
-}
-
-function populateYearDropdown(years) {
-  yearDropdown.innerHTML =
-    '<option value="">All Movies</option>' +
-    years.map(year => `<option value="${year}">${year}</option>`).join('');
-}
-
-yearDropdown.addEventListener('change', function () {
-  const selectedYear = this.value;
-  fetchMovies(1, selectedYear);
-});
-
-
-document.addEventListener('DOMContentLoaded', fetchYears);
-
-
-
-//! YILLARA GÖRE MOVIE SEARCH SONU

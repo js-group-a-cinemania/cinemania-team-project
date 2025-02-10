@@ -467,6 +467,7 @@ a {
 
 /* mobile  */
 
+
 body.dark-mode {
   background: var(--background);
   color: var(--white);
@@ -542,12 +543,6 @@ body.dark-mode {
   position: absolute;
   top: 7px;
   left: 15px;
-}
-.header-logo img {
-  width: 36px;
-  height: 36px;
-  position: absolute;
-  top: 10px;
 }
 .menu {
   display: flex;
@@ -667,7 +662,7 @@ body.dark-mode {
 .search-input {
   width: 224px;
   height: 40px;
-  padding: 10px;
+  padding: 10px 142px 10px 10px;
   gap: 10px;
   border-radius: 8px;
   border: 1px solid #595959;
@@ -685,7 +680,7 @@ body.dark-mode {
   font-size: 14px;
   font-weight: 500;
   line-height: 16.41px;
-  text-align: left;
+  text-align: center;
 }
 .input-container {
   display: flex;
@@ -720,7 +715,7 @@ body.dark-mode {
   margin: 0 auto;
   width: 173px;
   height: 40px;
-  padding: 10px;
+  padding: 10px 110px 10px 10px;
   gap: 10px;
   border-radius: 8px;
   border: 1px solid #595959;
@@ -731,7 +726,7 @@ body.dark-mode {
   font-size: 14px;
   font-weight: 500;
   line-height: 16.41px;
-  text-align: left;
+  text-align: center;
 }
 .catalog-search-button {
   border-radius: 50%;
@@ -848,15 +843,16 @@ body.dark-mode {
   bottom: 30px;
   width: 250px;
   height: 20px;
-  font-size: 12px;
-  line-height: 1.67;
 }
 
 .gallery-movies-details {
   color: #b7b7b7;
   font-style: normal;
   font-weight: 400;
-  padding: 0px;
+}
+
+.gallery-movies-title,
+.gallery-movies-details {
   font-size: 12px;
   line-height: 1.67;
 }
@@ -920,62 +916,15 @@ body.dark-mode {
   line-height: 28px;
   text-align: center;
 }
-<<<<<<< HEAD
-.close-pop-up {
-  border: none;
-  background: none;
-}
-.closeIcon:hover path {
-  stroke: #f87719;
-=======
-
-/* Modal Kapalıyken Gizle */
-.backdrop-movie-info {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
->>>>>>> 4cbfbf0 (last update)
-}
-
-/* Modal Açıldığında Görünür Yap */
-.backdrop-movie-info.open {
-  display: flex;
-}
-
-/* Modal İçeriği */
-.modal-movie-info {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  text-align: center;
-  position: relative;
-}
-
-/* Modal Kapat Butonu */
-.close-pop-up {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-}
 
 
 .gallery-movies-title {
   text-align: left;
+  padding-left: 10px;
 }
 .gallery-movies-details {
   text-align: left;
+  padding-left: 10px;
 }
 
 .pagination {
@@ -1057,6 +1006,7 @@ body.dark-mode {
   }
   .logo-text {
     position: absolute;
+    top: 10px;
     left: 60px;
     font-size: 24px;
   }
@@ -1168,18 +1118,18 @@ body.dark-mode {
     font-weight: 400;
     bottom: 30px;
     width: 300px;
-    font-size: 12px;
-    line-height: 1.67;
-    padding: 0px;
   }
 
   .gallery-movies-details {
     color: #b7b7b7;
     font-style: normal;
     font-weight: 400;
+  }
+
+  .gallery-movies-title,
+  .gallery-movies-details {
     font-size: 12px;
     line-height: 1.67;
-    padding: 0px;
   }
 
   .gallery-movies {
@@ -1252,6 +1202,7 @@ body.dark-mode {
   }
   .logo-text {
     position: absolute;
+    top: 10px;
     left: 60px;
     font-size: 24px;
   }
@@ -1309,22 +1260,14 @@ body.dark-mode {
     left: 20px;
   }
 
-  .gallery-movies-title {
-    font-size: 20px;
-    line-height: 23.44px;
-  }
+  .gallery-movies-title,
   .gallery-movies-details {
-    width: 200px;
-    padding: 0px;
-    font-size: 17px;
-    line-height: 23.44px;
+    font-size: 20px;
+    line-height: 1.15;
   }
+
   .gallery-movies-title {
-    margin-bottom: 35px;
-    width: 400px;
-    height: 30px;
-    padding: 0px;
-    text-align: left;
+    margin-bottom: 25px;
   }
   .catalog-movie-container {
     margin-top: 100px;
@@ -1484,12 +1427,12 @@ body.dark-mode {
 
 /* WEEKLY TRENDS START*/
 
-/* .bodyStyle {
+.bodyStyle {
   background-color: rgba(17, 17, 17, 1);
 }
 body.lightTheme .bodyStyle {
   background-color: #ffffff;
-} */
+}
 .weeklyTrendsTitle {
   font-family: Roboto;
   font-size: 16px;
@@ -1499,9 +1442,9 @@ body.lightTheme .bodyStyle {
   color: rgba(255, 255, 255, 1);
 }
 
-/* body.lightTheme .weeklyTrendsTitle {
+body.lightTheme .weeklyTrendsTitle {
   color: #111111;
-} */
+}
 
 .weeklyTrendsSeeAll {
   font-family: Roboto;
@@ -1515,9 +1458,9 @@ body.lightTheme .bodyStyle {
   background-color: inherit;
 }
 
-/* body.lightTheme .weeklyTrendsSeeAll {
+body.lightTheme .weeklyTrendsSeeAll {
   background-color: #ffffff;
-} */
+}
 .SectionWeeklyTrends {
   width: 320px;
   display: flex;
@@ -1685,9 +1628,9 @@ body.lightTheme .bodyStyle {
   font-family: 'Roboto', sans-serif;
 }
 
-/* body.light-theme .footerContent {
+body.light-theme .footerContent {
   color: #111111;
-} */
+}
 
 .footerText {
   display: flex;
@@ -2113,9 +2056,9 @@ body.lightTheme .bodyStyle {
   margin-top: 5px;
 }
 
-/* body.light-theme .memberName {
+body.light-theme .memberName {
   color: black;
-} */
+}
 
 .footerHeartIcon {
   margin-left: 10px;
