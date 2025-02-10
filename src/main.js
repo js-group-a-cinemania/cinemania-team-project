@@ -10,7 +10,7 @@ import {
   fetchTrendingMovies,
   renderMovies,
   openModal,
-} from './fileName.js';
+} from './js/weekly-trends.js';
 
 renderMovies(3);
 
