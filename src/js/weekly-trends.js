@@ -10,7 +10,7 @@ const options = {
   },
 };
 
-// 📌 Film türlerini çekip ID → isim dönüşümü yap
+//  Film türlerini çekip ID → isim dönüşümü yap
 async function getGenres() {
   try {
     const response = await axios.get(
@@ -27,7 +27,7 @@ async function getGenres() {
   }
 }
 
-// 📌 Günlük trend filmleri getir
+//  Günlük trend filmleri getir
 export const fetchTrendingMovies = async () => {
   try {
     const response = await axios.get(
@@ -41,7 +41,7 @@ export const fetchTrendingMovies = async () => {
   }
 };
 
-// 🎬 Filmleri Listeleme ve Modal Açma
+//  Filmleri Listeleme ve Modal Açma
 async function renderMovies(movieCount = 3) {
   const movieContainer = document.querySelector('.weeklyTrendsContent');
   movieContainer.innerHTML = '';
@@ -66,7 +66,7 @@ async function renderMovies(movieCount = 3) {
         .map(id => genreMap[id] || 'Unknown')
         .join(', ');
 
-      // 📌 Film kartını oluştur
+      //  Film kartını oluştur
       const movieElement = `
         <div class="MovieCard" data-movie='${JSON.stringify(
           movie
@@ -81,7 +81,7 @@ async function renderMovies(movieCount = 3) {
       movieContainer.insertAdjacentHTML('beforeend', movieElement);
     });
 
-    // 📌 Film kartlarına tıklama event'i ekle (Modal Açma)
+    //  Film kartlarına tıklama event'i ekle (Modal Açma)
     document.querySelectorAll('.MovieCard').forEach(card => {
       card.addEventListener('click', () => {
         const movieData = JSON.parse(card.getAttribute('data-movie'));
@@ -95,7 +95,7 @@ async function renderMovies(movieCount = 3) {
   }
 }
 
-// 📌 Modalı Açma Fonksiyonu
+//  Modalı Açma Fonksiyonu
 function openModal(movie) {
   const modal = document.querySelector('#WTmovieModal');
   const modalContent = document.querySelector('.WTmodal-content');
@@ -115,7 +115,7 @@ function openModal(movie) {
 
   modal.style.display = 'block';
 
-  // 📌 Modalı kapatma
+  //  Modalı kapatma
   document.querySelector('.close').addEventListener('click', () => {
     modal.style.display = 'none';
   });
@@ -127,10 +127,10 @@ function openModal(movie) {
   });
 }
 
-// 🎯 Sayfa açıldığında ilk 3 filmi göster
+//  Sayfa açıldığında ilk 3 filmi göster
 renderMovies(3);
 
-// 🔘 "View All" Butonu → Tüm Filmleri Göster
+//  "View All" Butonu → Tüm Filmleri Göster
 document
   .querySelector('#viewAll')
   .addEventListener('click', () => renderMovies());
