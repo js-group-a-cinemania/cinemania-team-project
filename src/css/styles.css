@@ -163,12 +163,12 @@ a {
 .hero-section {
   width: 100%;
   height: 720px;
-  padding-bottom: 249px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  background-image: url(../images/hero.png);
+  background-image: url(../images/hero.png), linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
   background-repeat: no-repeat;
   background-position: right;
 }
@@ -920,21 +920,56 @@ body.dark-mode {
   line-height: 28px;
   text-align: center;
 }
+<<<<<<< HEAD
 .close-pop-up {
   border: none;
   background: none;
 }
 .closeIcon:hover path {
   stroke: #f87719;
+=======
+
+/* Modal Kapalıyken Gizle */
+.backdrop-movie-info {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+>>>>>>> 4cbfbf0 (last update)
 }
 
-.modal-movie-info {
-  display: none;
-  width: 280px;
-  height: 847px;
-  gap: 0px;
-  border-radius: 16px;
+/* Modal Açıldığında Görünür Yap */
+.backdrop-movie-info.open {
+  display: flex;
 }
+
+/* Modal İçeriği */
+.modal-movie-info {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+}
+
+/* Modal Kapat Butonu */
+.close-pop-up {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
 
 .gallery-movies-title {
   text-align: left;
@@ -1199,8 +1234,6 @@ body.dark-mode {
   .header-logo img {
     width: 48px;
     height: 48px;
-    position: absolute;
-    top: 0px;
   }
   .nav-list {
     display: flex;
@@ -1392,13 +1425,14 @@ body.dark-mode {
   transition: transform 0.3s;
 }
 .SectionHero {
-  width: 320px;
+  width: 390px;
   height: 380px;
   display: flex;
   margin: 0 auto;
   background: url(../img/hero-background.jpg),
     linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
   background-size: cover;
+  margin-top: 20px;
 }
 
 .HomeHeroDiv {
@@ -1862,7 +1896,7 @@ body.lightTheme .bodyStyle {
   .SectionHero {
     width: 1280px;
     height: 720px;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   .HomeHeroDiv {
     margin-top: 169px;
@@ -2090,19 +2124,6 @@ body.lightTheme .bodyStyle {
 }
 
 /* catalog eklendi */
-:root {
-  --background: #111;
-  --white: #fff;
-  --grey: #b7b7b7;
-  --orange: #f87719;
-  --secondary-text: #f8f8f8;
-  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", "Source Han Sans CN", sans-serif;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 body {
   font-family: var(--default-font-family);
   line-height: 1.5;
@@ -2202,18 +2223,7 @@ body {
   object-fit: contain;
 }
 /* Hero Section */
-.hero-section {
-  width: 100%;
-  height: 720px;
-  padding-bottom: 249px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  background-image: url(../images/hero.png);
-  background-repeat: no-repeat;
-  background-position: right;
-}
+
 .hero-content {
   width: 464px;
   max-width: 100%;
@@ -2234,19 +2244,6 @@ body {
     rgba(17, 17, 17, 0) 72.02%
   );
   align-content: left;
-}
-.hero-description {
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--secondary-text);
-  display: block;
-  padding-left: 24%;
-  background: linear-gradient(
-    79.39deg,
-    #111111 32.37%,
-    rgba(17, 17, 17, 0) 72.02%
-  );
-  padding-bottom: 242px;
 }
 /* Empty Library Message */
 .empty-library-message {
@@ -2338,7 +2335,32 @@ body {
     padding-left: 5%;
   }
   .hero-description {
-    font-size: 14px;
+    font-size: 10px;
+  }
+  .hero-description {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--secondary-text);
+    display: block;
+    padding-left: 6%;
+    background: linear-gradient(
+      79.39deg,
+      #111111 32.37%,
+      rgba(17, 17, 17, 0) 72.02%
+    );
+    padding-bottom: 242px;
+  }
+  .hero-section {
+    width: 100%;
+    height: 380px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background-image: url(../images/hero.png), linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    background-repeat: no-repeat;
+    background-position: right;
   }
   .empty-library-message {
     margin-top: 40px;
@@ -2455,7 +2477,6 @@ body {
 @media screen and (min-width: 1280px) {
   .hero-title {
     font-size: 64px;
-    padding-left: 12%;
   }
   .search-button {
     .hero-description {
@@ -3083,8 +3104,6 @@ body.dark-mode {
   .header-logo img {
     width: 48px;
     height: 48px;
-    position: absolute;
-    top: 0px;
   }
   .nav-list {
     display: flex;
@@ -3278,7 +3297,7 @@ body.dark-mode {
     width: 48px;
     height: 48px;
     position: absolute;
-    top: 0px;
+    top: 0;
   }
   .nav-list {
     display: flex;
