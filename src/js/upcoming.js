@@ -69,4 +69,4 @@ async function fetchAndUpdateMovie() {
   }
 }
 
-fetchAndUpdateMovie();
+export default fetchAndUpdateMovie();
