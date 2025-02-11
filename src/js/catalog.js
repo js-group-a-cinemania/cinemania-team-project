@@ -293,7 +293,7 @@ function displayMovies(movies) {
 
 
 // **Yıldız Puanı Hesapla**
-function starRatingCalc(vote_average) {
+export function starRatingCalc(vote_average) {
   const stars = Math.round(vote_average / 2);
   return '★'.repeat(stars) + '☆'.repeat(5 - stars);
 }
