@@ -1,4 +1,14 @@
+import { getLibraryMovies, toggleLibrary } from "./storage.js";
+import { addMovieToLibrary } from "./library.js";
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await fetchGenres(); // Türleri yükle
+});
+
+
+console.log("📌 library.js yüklendi mi?", getLibraryMovies()); // ✅ TEST LOGU
 //! DARK MODE-LIGHT MODE
+
 
 document.addEventListener('DOMContentLoaded', function () {
   const toggle = document.getElementById('darkmode-toggle');
@@ -19,7 +29,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
-
+document.addEventListener("DOMContentLoaded", () => {
+  const yearDropdown = document.querySelector(".year-dropdown");
+  if (!yearDropdown) {
+      console.error("Hata: Year dropdown elementi HTML içinde bulunamadı!");
+      return;
+  }
+  yearDropdown.addEventListener("change", async function () {
+      const selectedYear = this.value;
+      console.log(`📅 ${selectedYear} yılına ait filmler listeleniyor...`);
+      await fetchMoviesByYear(selectedYear);
+  });
+});
 //! DARK MODE-LIGHT MODE SONU
 
 const apiKey = '9a0d30072ad38e4a4c69d8b167f5dfc1';
@@ -45,7 +66,7 @@ function populateYearDropdown() {
   const startYear = 1900; // Filmler için en erken yıl
 
   // Varsayılan seçeneği ekle
-  yearDropdown.innerHTML = `<option value="">Select Year</option>`;
+  yearDropdown.innerHTML = `<option value="">Year</option>`;
 
   for (let year = currentYear; year >= startYear; year--) {
     const option = document.createElement("option");
@@ -104,13 +125,18 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     const movieCard = event.target.closest(".gallery-movies-item"); // Film kartını bul
-    if (!movieCard) return;
+    if (!movieCard) {
+      console.warn("Tıklanan öğe bir film kartı değil!");
+      return;
+    }
 
     const movieId = movieCard.dataset.id; // Filmin ID'sini al
     if (!movieId) {
       console.error("Film ID bulunamadı!");
       return;
     }
+
+    console.log("Tıklandı, film ID:", movieId); // **Hata Ayıklama İçin**
 
     try {
       const movieData = await fetchMovieDetails(movieId); // API'den film detaylarını çek
@@ -122,25 +148,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // **Modal açma fonksiyonu**
   function showModal(movie) {
+    const modal = document.getElementById("movie-modal");
+    const modalContent = document.querySelector(".modal-movie-info-container");
+
     modalContent.innerHTML = `
-      <h2 class="modal-title">${movie.title}</h2>
-      <img class="modal-poster" src="${movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : './img/no-image.png'}" alt="${movie.title}" />
+      <h2 class="modal-title">${movie.title || "Unknown Title"}</h2>
+      <img height="500" class="modal-poster" src="${movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : './img/no-image.png'}" alt="${movie.title}" />
       <p><strong>Overview:</strong> ${movie.overview || "No description available."}</p>
-      <p><strong>Genres:</strong> ${movie.genres.map(g => g.name).join(", ") || "Unknown"}</p>
+      <p><strong>Genres:</strong> ${movie.genres?.map(g => g.name).join(", ") || "Unknown"}</p>
       <p><strong>Release Date:</strong> ${movie.release_date || "Unknown"}</p>
+      <button id="add-to-library-btn" class="library-button">${getLibraryMovies().some(m => m.id === movie.id) ? "❌ Remove from Library" : "📚 Add to Library"}</button>
     `;
 
-    modal.classList.add("open"); // Açma class'ı ekle
-  }
+    modal.style.display = "flex";
+    modal.classList.add("open");
 
+    // 📌 Butona event listener ekle
+    const addToLibraryBtn = document.getElementById("add-to-library-btn");
+    if (addToLibraryBtn) {
+        addToLibraryBtn.addEventListener("click", () => {
+            console.log("📌 Add to Library butonuna tıklandı!");
+            toggleLibrary(movie, addToLibraryBtn);
+        });
+    } else {
+        console.error("❌ Add to Library butonu bulunamadı!");
+    }
+}
   // **Modalı kapatma event'leri**
   closeModalButton.addEventListener("click", () => {
-    modal.classList.remove("open"); // Modalı kapat
+    modal.style.display = "none";
+    modal.classList.remove("open");
   });
 
   // **Modal dışına tıklanınca kapatma**
   modal.addEventListener("click", (event) => {
     if (event.target === modal) {
+      modal.style.display = "none";
       modal.classList.remove("open");
     }
   });
@@ -148,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // **Escape tuşuna basınca modalı kapat**
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
+      modal.style.display = "none";
       modal.classList.remove("open");
     }
   });
@@ -156,9 +200,14 @@ document.addEventListener("DOMContentLoaded", () => {
   async function fetchMovieDetails(movieId) {
     const apiKey = "9a0d30072ad38e4a4c69d8b167f5dfc1";
     const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
-    return response.json();
-  }
+    const data = await response.json();
+
+    console.log("🎥 API'den Gelen Film Verisi:", data); // **EKLENDİ**
+
+    return data;
+}
 });
+
 
 
 // ! **Hero kısmını göster**
@@ -204,16 +253,10 @@ async function fetchGenres() {
 
 // **Trend Filmleri Listele**
 async function fetchTrendingMovies() {
-  try {
-    await fetchGenres();
-    const response = await fetch(
-      `${baseUrl}/trending/movie/week?api_key=${apiKey}`
-    );
-    const data = await response.json();
-    displayMovies(data.results);
-  } catch (error) {
-    console.error('Hata:', error);
-  }
+  await fetchGenres(); // 🔴 Önce türleri al
+  const response = await fetch(`${baseUrl}/trending/movie/week?api_key=${apiKey}`);
+  const data = await response.json();
+  displayMovies(data.results);
 }
 
 // **Filmleri Ekrana Yazdır**

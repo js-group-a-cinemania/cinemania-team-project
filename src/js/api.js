@@ -1,5 +1,24 @@
 import axios from 'axios';
 
+let genreMap = {}; // 🔴 Türler burada saklanacak
+
+async function fetchGenres() {
+    try {
+        const response = await fetch(`${baseUrl}/genre/movie/list?api_key=${apiKey}`);
+        const data = await response.json();
+        data.genres.forEach(genre => {
+            genreMap[genre.id] = genre.name;
+        });
+    } catch (error) {
+        console.error('Film türleri alınırken hata oluştu:', error);
+    }
+}
+
+// **Türleri çek ve global olarak tanımla**
+document.addEventListener("DOMContentLoaded", async () => {
+    await fetchGenres();
+});
+
 const options = {
   headers: {
     accept: 'application/json',
