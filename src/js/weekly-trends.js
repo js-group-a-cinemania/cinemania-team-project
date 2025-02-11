@@ -53,7 +53,7 @@ async function renderMovies(movieCount = 3) {
       getGenres(),
     ]);
 
-    if (!movies || !movies.results || movies.results.length === 0) {
+    if (!movies || !movies.results?.length) {
       console.log('Film bulunamadı.');
       return;
     }
@@ -80,9 +80,7 @@ async function renderMovies(movieCount = 3) {
       `;
 
       // Film kartına tıklama event'i ekle (Modal Açma)
-      movieElement.addEventListener('click', () => {
-        openModal(movie);
-      });
+      movieElement.addEventListener('click', () => openModal(movie));
 
       movieContainer.appendChild(movieElement);
     });
@@ -127,13 +125,19 @@ function openModal(movie) {
 
   // Modal kapatma event'leri
   const closeModal = event => {
-    if (event.target === modal || event.target.classList.contains('close')) {
+    if (
+      event.target === modal ||
+      event.target.classList.contains('close') ||
+      event.key === 'Escape'
+    ) {
       modal.style.display = 'none';
       window.removeEventListener('click', closeModal);
+      window.removeEventListener('keydown', closeModal);
     }
   };
 
   window.addEventListener('click', closeModal);
+  window.addEventListener('keydown', closeModal); // ESC tuşu ile kapatma
 }
 
 // Sayfa açıldığında ilk 3 filmi göster
