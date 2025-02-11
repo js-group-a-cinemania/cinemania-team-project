@@ -13,7 +13,7 @@ const fetchFromAPI = async (endpoint, params = {}) => {
     return response.data;
   } catch (error) {
     console.error(
-      `API isteği başarısız (${endpoint}):`,
+      `API isteği basarisiz (${endpoint}):`,
       error.response?.data || error.message
     );
     return null;
