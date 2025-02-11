@@ -3,16 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Catalog</title>
-    <link rel="icon" href="./img/icons/logo.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cinemania</title>
   </head>
-  <link rel="stylesheet" href="./css/styles.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet"
-  />
-  <script type="module" src="./js/catalog.js" defer></script>
-  <script type="module" src="./main.js" defer></script>
   <body>
     <!-- TOGGLE BÖLÜMÜ -->
     <div class="toggle-container">
@@ -38,8 +37,8 @@
               stroke="white"
               stroke-linecap="round"
               stroke-linejoin="round"
-            /></svg
-        ></span>
+            /></svg>
+      </span>
         <span class="toggle-icon moon"
           ><svg
             width="11"
@@ -76,8 +75,8 @@
         <div class="nav-list">
           <nav class="nav-list">
             <ul class="nav-list">
-              <li><a href="homepage" class="nav-link">HOME</a></li>
-              <li><a href="catalog.html" class="nav-link">CATALOG</a></li>
+              <li><a href="index.html" class="nav-link">HOME</a></li>
+              <li><a href="catalog.html" class="nav-link active-link">CATALOG</a></li>
               <li><a href="mylibrary.html" class="nav-link">MY LIBRARY</a></li>
             </ul>
           </nav>
@@ -100,7 +99,7 @@
               <a class="mobile-nav-list" href="./catalog.html">CATALOG</a>
             </li>
             <li>
-              <a class="mobile-nav-list" href="./my_library.html">MY LIBRARY</a>
+              <a class="mobile-nav-list" href="./mylibrary.html">MY LIBRARY</a>
             </li>
           </ul>
         </nav>
@@ -151,7 +150,7 @@
                   stroke-linejoin="round"
                 />
               </svg>
-              <select class="year-dropdown"></select>
+              <select id="year-dropdown" class="year-dropdown"></select>
             </div>
             <div class="search-container">
               <input
@@ -206,30 +205,29 @@
 
     <!-- SECTION-CATALOG-MOVIES SONU -->
 
-    <!-- SECTION-MOVIE-MODAL -->
-    <section class="backdrop-movie-info">
-      <div class="modal-movie-info">
-        <button class="close-pop-up" type="button">
-          <svg
-            class="closeIcon"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M17.25 17.25L6.75 6.75M17.25 6.75L6.75 17.25"
-              stroke="#282828"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <div class="modal-movie-info-container"></div>
-      </div>
-    </section>
-
+   <!-- MODAL PENCERE -->
+<section class="backdrop-movie-info" id="movie-modal">
+  <div class="modal-movie-info">
+    <button class="close-pop-up" id="close-modal" type="button">
+      <svg
+        class="closeIcon"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M17.25 17.25L6.75 6.75M17.25 6.75L6.75 17.25"
+          stroke="#282828"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+    <div class="modal-movie-info-container"></div>
+  </div>
+</section>
     <!-- SECTION-MOVIE-MODAL SONU -->
 
     <!-- SECTION-PAGINATION -->
@@ -325,5 +323,7 @@
         </div>
       </div>
     </footer>
+    <script type="module" src="./js/catalog.js" defer></script>
+    <script type="module" src="./main.js" defer></script>
   </body>
 </html>

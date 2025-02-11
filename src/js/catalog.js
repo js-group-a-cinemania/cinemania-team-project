@@ -26,29 +26,140 @@ const apiKey = '9a0d30072ad38e4a4c69d8b167f5dfc1';
 const baseUrl = 'https://api.themoviedb.org/3';
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-document.addEventListener('DOMContentLoaded', () => {
-  fetchRandomMovie();
-  fetchTrendingMovies();
+document.addEventListener("DOMContentLoaded", async () => {
+  await fetchTrendingMovies(); // Filmleri çek
+  await populateYearDropdown(); // Yılları çek
+});
+document.addEventListener("DOMContentLoaded", () => {
+  populateYearDropdown(); // Sayfa yüklendiğinde yılları ekle
 });
 
-// ! **Hero kısmına rastgele bir film getir**
+function populateYearDropdown() {
+  const yearDropdown = document.querySelector(".year-dropdown");
+  if (!yearDropdown) {
+    console.error("Year dropdown elementi bulunamadı!");
+    return;
+  }
 
-async function fetchRandomMovie() {
+  const currentYear = new Date().getFullYear(); // Şu anki yıl
+  const startYear = 1900; // Filmler için en erken yıl
+
+  // Varsayılan seçeneği ekle
+  yearDropdown.innerHTML = `<option value="">Select Year</option>`;
+
+  for (let year = currentYear; year >= startYear; year--) {
+    const option = document.createElement("option");
+    option.value = year;
+    option.textContent = year;
+    yearDropdown.appendChild(option);
+  }
+}
+document.querySelector(".year-dropdown").addEventListener("change", async function () {
+  const selectedYear = this.value;
+
+  if (selectedYear) {
+    console.log(`📅 ${selectedYear} yılına ait filmler listeleniyor...`);
+    await fetchMoviesByYear(selectedYear);
+  }
+});
+
+// **Belirli bir yılın filmlerini API'den çek**
+async function fetchMoviesByYear(year) {
+  const apiKey = "9a0d30072ad38e4a4c69d8b167f5dfc1";
+  const baseUrl = "https://api.themoviedb.org/3";
+
   try {
     const response = await fetch(
-      `${baseUrl}/trending/movie/week?api_key=${apiKey}`
+      `${baseUrl}/discover/movie?api_key=${apiKey}&primary_release_year=${year}`
     );
     const data = await response.json();
 
     if (data.results.length > 0) {
-      const randomMovie =
-        data.results[Math.floor(Math.random() * data.results.length)];
-      displayHeroMovie(randomMovie);
+      displayMovies(data.results); // Filmleri ekrana yazdır
+    } else {
+      console.warn(`❌ ${year} yılına ait film bulunamadı.`);
+      document.querySelector(".gallery-movies").innerHTML = `<p>No movies found for ${year}</p>`;
     }
   } catch (error) {
-    console.error('Hata:', error);
+    console.error("API'den film listesi alınırken hata oluştu:", error);
   }
 }
+
+// **API’de gerçekten film olan yılları getir**
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const galleryMovies = document.querySelector(".gallery-movies"); // Film listesi
+  const modal = document.getElementById("movie-modal"); // Modal arkaplan
+  const modalContent = document.querySelector(".modal-movie-info-container"); // Modal içeriği
+  const closeModalButton = document.getElementById("close-modal"); // Modal kapatma butonu
+
+  if (!galleryMovies || !modal || !modalContent || !closeModalButton) {
+    console.error("Modal veya film galerisi elementi bulunamadı!");
+    return;
+  }
+
+  // **Filme tıklama event listener ekle**
+  galleryMovies.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const movieCard = event.target.closest(".gallery-movies-item"); // Film kartını bul
+    if (!movieCard) return;
+
+    const movieId = movieCard.dataset.id; // Filmin ID'sini al
+    if (!movieId) {
+      console.error("Film ID bulunamadı!");
+      return;
+    }
+
+    try {
+      const movieData = await fetchMovieDetails(movieId); // API'den film detaylarını çek
+      showModal(movieData);
+    } catch (error) {
+      console.error("Film detayları yüklenirken hata oluştu:", error);
+    }
+  });
+
+  // **Modal açma fonksiyonu**
+  function showModal(movie) {
+    modalContent.innerHTML = `
+      <h2 class="modal-title">${movie.title}</h2>
+      <img class="modal-poster" src="${movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : './img/no-image.png'}" alt="${movie.title}" />
+      <p><strong>Overview:</strong> ${movie.overview || "No description available."}</p>
+      <p><strong>Genres:</strong> ${movie.genres.map(g => g.name).join(", ") || "Unknown"}</p>
+      <p><strong>Release Date:</strong> ${movie.release_date || "Unknown"}</p>
+    `;
+
+    modal.classList.add("open"); // Açma class'ı ekle
+  }
+
+  // **Modalı kapatma event'leri**
+  closeModalButton.addEventListener("click", () => {
+    modal.classList.remove("open"); // Modalı kapat
+  });
+
+  // **Modal dışına tıklanınca kapatma**
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.classList.remove("open");
+    }
+  });
+
+  // **Escape tuşuna basınca modalı kapat**
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      modal.classList.remove("open");
+    }
+  });
+
+  // **Film detaylarını API'den al**
+  async function fetchMovieDetails(movieId) {
+    const apiKey = "9a0d30072ad38e4a4c69d8b167f5dfc1";
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
+    return response.json();
+  }
+});
+
 
 // ! **Hero kısmını göster**
 
@@ -137,6 +248,7 @@ function displayMovies(movies) {
     .join('');
 }
 
+
 // **Yıldız Puanı Hesapla**
 function starRatingCalc(vote_average) {
   const stars = Math.round(vote_average / 2);
@@ -222,6 +334,7 @@ let currentPage = 1;
 const maxPagesToFetch = 500;
 let totalPages = 1;
 
+
 async function fetchMovies(page = 1, year = '') {
   try {
     if (page > maxPagesToFetch) {
@@ -229,12 +342,9 @@ async function fetchMovies(page = 1, year = '') {
       return;
     }
 
-    let url = `${baseUrl}/discover/movie?api_key=${apiKey}&page=${page}`;
-    if (year) {
-      url += `&primary_release_year=${year}`;
-    }
-
-    const response = await fetch(url);
+    const response = await fetch(
+      `${baseUrl}/movie/popular?api_key=${apiKey}&page=${page}`
+    );
     const data = await response.json();
 
     totalPages = Math.min(data.total_pages, maxPagesToFetch);

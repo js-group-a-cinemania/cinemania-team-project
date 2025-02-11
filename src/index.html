@@ -17,8 +17,8 @@
     <div class="toggle-container">
       <input type="checkbox" id="darkmode-toggle" />
       <label for="darkmode-toggle" class="toggle-label">
-        <span class="toggle-icon sun"
-          ><svg
+        <span class="toggle-icon sun">
+          <svg
             width="11"
             height="10"
             viewBox="0 0 11 10"
@@ -36,9 +36,9 @@
               d="M8.98379 1.84669L9.044 1.78819M2.4301 8.21419L2.49031 8.15569M5.73705 0.53719V0.50119M5.73705 9.50119V9.46519M1.14252 5.00119H1.10547M10.3686 5.00119H10.3316M2.49031 1.84669L2.4301 1.78819M9.044 8.21419L8.98379 8.15569"
               stroke="white"
               stroke-linecap="round"
-              stroke-linejoin="round"
-            /></svg
-        ></span>
+              stroke-linejoin="round"/>
+            </svg>
+      </span>
         <span class="toggle-icon moon"
           ><svg
             width="11"
@@ -75,7 +75,7 @@
         <div class="nav-list">
           <nav class="nav-list">
             <ul class="nav-list">
-              <li><a href="./index.html" class="nav-link">HOME</a></li>
+              <li><a href="./index.html" class="nav-link active-link">HOME</a></li>
               <li><a href="./catalog.html" class="nav-link">CATALOG</a></li>
               <li>
                 <a href="./mylibrary.html" class="nav-link">MY LIBRARY</a>
@@ -85,6 +85,28 @@
         </div>
       </div>
     </header>
+
+    <!-- MOBİL MENU -->
+    <div class="backdrop" id="backdrop"></div>
+    <div class="mobil" id="mobil">
+      <div class="mobil-content">
+        <a href="./index.html" class="mobil-logo">
+          <img src="./img/icons/logo.png" alt="Logo" />
+        </a>
+        <nav class="mobil-nav">
+          <ul class="mobil-nav-list">
+            <li><a class="mobile-nav-list" href="./index.html">HOME</a></li>
+            <li>
+              <a class="mobile-nav-list" href="./catalog.html">CATALOG</a>
+            </li>
+            <li>
+              <a class="mobile-nav-list" href="./mylibrary.html">MY LIBRARY</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- MOBİL MENU SONU -->
 
     <!-- SECTION HERO -->
 
@@ -211,11 +233,11 @@
         </div>
       </div>
     </footer>
-
-    <script src="./js/footer.js"></script>
+    <script type="module" src="./js/catalog.js" defer></script>
+    <script type="module" src="./js/footer.js"></script>
     <script type="module" src="./js/weekly-trends.js"></script>
     <script type="module" src="./js/upcoming.js"></script>
 
-    <!-- <script type="module" src="/src/main.js"></script> -->
+     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
