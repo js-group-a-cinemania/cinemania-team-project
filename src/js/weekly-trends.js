@@ -100,6 +100,9 @@ function openModal(movie) {
   const modal = document.querySelector('#WTmovieModal');
   const modalContent = document.querySelector('.WTmodal-content');
 
+  // Önce içeriği temizle
+  modalContent.innerHTML = '';
+
   const posterUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     : 'yedek-gorsel-url.jpg';
@@ -115,16 +118,22 @@ function openModal(movie) {
 
   modal.style.display = 'block';
 
-  //  Modalı kapatma
-  document.querySelector('.close').addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  window.addEventListener('click', event => {
-    if (event.target === modal) {
+  //  Modal kapatma event'leri
+  modalContent.addEventListener('click', event => {
+    if (event.target.classList.contains('close')) {
       modal.style.display = 'none';
     }
   });
+
+  window.addEventListener(
+    'click',
+    event => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    },
+    { once: true } // Tekrar tekrar eklenmesini önler
+  );
 }
 
 //  Sayfa açıldığında ilk 3 filmi göster
@@ -134,3 +143,4 @@ renderMovies(3);
 document
   .querySelector('#viewAll')
   .addEventListener('click', () => renderMovies());
+
