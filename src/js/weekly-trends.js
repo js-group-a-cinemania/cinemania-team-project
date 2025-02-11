@@ -2,15 +2,16 @@ import axios from 'axios';
 
 const API_KEY = 'cACAF4FB30E4ADEDA0CB251474AAA7DA';
 const BASE_URL = 'https://api.themoviedb.org/3';
+const DEFAULT_POSTER = 'yedek-gorsel-url.jpg';
+
 const options = {
   headers: {
     accept: 'application/json',
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYWNhZjRmYjMwZTRhZGVkYTBjYjI1MTQ3NGFhYTdkYSIsIm5iZiI6MTczODM1NDIxMy4zNDgsInN1YiI6IjY3OWQyZTI1MTc2ZmRiMjI0NGNiMjkzMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ug0aezZ5htnawKCPoADR0i-JxcDzj43sBX4NiKOKbvg',
+    Authorization: `Bearer ${API_KEY}`,
   },
 };
 
-//  Film türlerini çekip ID → isim dönüşümü yap
+// Film türlerini çekip ID → isim dönüşümü yap
 async function getGenres() {
   try {
     const response = await axios.get(
@@ -27,7 +28,7 @@ async function getGenres() {
   }
 }
 
-//  Günlük trend filmleri getir
+// Günlük trend filmleri getir
 export const fetchTrendingMovies = async () => {
   try {
     const response = await axios.get(
@@ -41,7 +42,7 @@ export const fetchTrendingMovies = async () => {
   }
 };
 
-//  Filmleri Listeleme ve Modal Açma
+// Filmleri Listeleme ve Modal Açma
 async function renderMovies(movieCount = 3) {
   const movieContainer = document.querySelector('.weeklyTrendsContent');
   movieContainer.innerHTML = '';
@@ -60,33 +61,30 @@ async function renderMovies(movieCount = 3) {
     movies.results.slice(0, movieCount).forEach(movie => {
       const imageUrl = movie.poster_path
         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-        : 'yedek-gorsel-url.jpg';
-
+        : DEFAULT_POSTER;
       const genres = movie.genre_ids
         .map(id => genreMap[id] || 'Unknown')
         .join(', ');
 
-      //  Film kartını oluştur
-      const movieElement = `
-        <div class="MovieCard" data-movie='${JSON.stringify(
-          movie
-        )}' style="cursor: pointer;">
-          <img class="MovieCardİmg" src="${imageUrl}" alt="${movie.title}" />
-          <div class="gradient-container"></div>
-          <h3>${movie.title}</h3>
-          <p>${genres} / ${movie.release_date}</p>
-        </div>
+      // Film kartını oluştur
+      const movieElement = document.createElement('div');
+      movieElement.classList.add('MovieCard');
+      movieElement.style.cursor = 'pointer';
+      movieElement.dataset.movie = JSON.stringify(movie);
+
+      movieElement.innerHTML = `
+        <img class="MovieCardİmg" src="${imageUrl}" alt="${movie.title}" />
+        <div class="gradient-container"></div>
+        <h3>${movie.title}</h3>
+        <p>${genres} / ${movie.release_date || 'Tarih bilinmiyor'}</p>
       `;
 
-      movieContainer.insertAdjacentHTML('beforeend', movieElement);
-    });
-
-    //  Film kartlarına tıklama event'i ekle (Modal Açma)
-    document.querySelectorAll('.MovieCard').forEach(card => {
-      card.addEventListener('click', () => {
-        const movieData = JSON.parse(card.getAttribute('data-movie'));
-        openModal(movieData);
+      // Film kartına tıklama event'i ekle (Modal Açma)
+      movieElement.addEventListener('click', () => {
+        openModal(movie);
       });
+
+      movieContainer.appendChild(movieElement);
     });
   } catch (error) {
     console.error('Filmler yüklenirken hata oluştu:', error);
@@ -95,52 +93,53 @@ async function renderMovies(movieCount = 3) {
   }
 }
 
-//  Modalı Açma Fonksiyonu
+// Modalı Açma Fonksiyonu
 function openModal(movie) {
   const modal = document.querySelector('#WTmovieModal');
   const modalContent = document.querySelector('.WTmodal-content');
+
+  if (!modal || !modalContent) {
+    console.error('Modal elemanları bulunamadı.');
+    return;
+  }
 
   // Önce içeriği temizle
   modalContent.innerHTML = '';
 
   const posterUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : 'yedek-gorsel-url.jpg';
+    : DEFAULT_POSTER;
 
   modalContent.innerHTML = `
     <span class="close">&times;</span>
     <img src="${posterUrl}" alt="${movie.title}" class="WTmodal-img"/>
     <h2>${movie.title}</h2>
-    <p><strong>Release Date:</strong> ${movie.release_date}</p>
-    <p><strong>Popularity:</strong> ${movie.popularity}</p>
-    <p><strong>Overview:</strong> ${movie.overview}</p>
+    <p><strong>Release Date:</strong> ${
+      movie.release_date || 'Tarih bilinmiyor'
+    }</p>
+    <p><strong>Popularity:</strong> ${movie.popularity || 'Bilinmiyor'}</p>
+    <p><strong>Overview:</strong> ${
+      movie.overview || 'Açıklama mevcut değil.'
+    }</p>
   `;
 
   modal.style.display = 'block';
 
-  //  Modal kapatma event'leri
-  modalContent.addEventListener('click', event => {
-    if (event.target.classList.contains('close')) {
+  // Modal kapatma event'leri
+  const closeModal = event => {
+    if (event.target === modal || event.target.classList.contains('close')) {
       modal.style.display = 'none';
+      window.removeEventListener('click', closeModal);
     }
-  });
+  };
 
-  window.addEventListener(
-    'click',
-    event => {
-      if (event.target === modal) {
-        modal.style.display = 'none';
-      }
-    },
-    { once: true } // Tekrar tekrar eklenmesini önler
-  );
+  window.addEventListener('click', closeModal);
 }
 
-//  Sayfa açıldığında ilk 3 filmi göster
-renderMovies(3);
+// Sayfa açıldığında ilk 3 filmi göster
+document.addEventListener('DOMContentLoaded', () => renderMovies(3));
 
-//  "View All" Butonu → Tüm Filmleri Göster
-document
-  .querySelector('#viewAll')
-  .addEventListener('click', () => renderMovies());
-
+// "View All" Butonu → Katalog Sayfasına Yönlendirme
+document.querySelector('#viewAll')?.addEventListener('click', () => {
+  window.location.href = 'catalog.html';
+});
