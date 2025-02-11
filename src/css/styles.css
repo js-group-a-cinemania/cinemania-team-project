@@ -2209,6 +2209,10 @@ body.light-theme .memberName {
   min-height: 100vh;
   overflow-x: hidden;
 }
+.library-movies {
+  display: flex;
+  gap: 12px;
+}
 /* Header & Navigation */
 .main-header {
   background-color: #000;
