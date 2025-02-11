@@ -1,49 +1,44 @@
 import axios from 'axios';
 
-const API_KEY = 'cACAF4FB30E4ADEDA0CB251474AAA7DA';
+const API_KEY = '9a0d30072ad38e4a4c69d8b167f5dfc1';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const DEFAULT_POSTER = 'yedek-gorsel-url.jpg';
 
-const options = {
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${API_KEY}`,
-  },
-};
-
-// Film türlerini çekip ID → isim dönüşümü yap
-async function getGenres() {
+// API İsteklerini Doğru Formatta Yap
+const fetchFromAPI = async (endpoint, params = {}) => {
   try {
-    const response = await axios.get(
-      `${BASE_URL}/genre/movie/list?language=en-US`,
-      options
-    );
-    return response.data.genres.reduce((acc, genre) => {
-      acc[genre.id] = genre.name;
-      return acc;
-    }, {});
-  } catch (error) {
-    console.error('Türleri alırken hata oluştu:', error);
-    return {};
-  }
-}
-
-// Günlük trend filmleri getir
-export const fetchTrendingMovies = async () => {
-  try {
-    const response = await axios.get(
-      `${BASE_URL}/trending/all/day?language=en-US`,
-      options
-    );
+    const response = await axios.get(`${BASE_URL}${endpoint}`, {
+      params: { api_key: API_KEY, language: 'en-US', ...params },
+    });
     return response.data;
   } catch (error) {
-    console.error('Trend filmleri alırken hata oluştu:', error);
+    console.error(
+      `API isteği başarısız (${endpoint}):`,
+      error.response?.data || error.message
+    );
     return null;
   }
 };
 
+// Film türlerini çekip ID → isim dönüşümü yap
+const getGenres = async () => {
+  const data = await fetchFromAPI('/genre/movie/list');
+  return (
+    data?.genres?.reduce((acc, genre) => {
+      acc[genre.id] = genre.name;
+      return acc;
+    }, {}) || {}
+  );
+};
+
+// Günlük trend filmleri getir
+const fetchTrendingMovies = async () => {
+  const data = await fetchFromAPI('/trending/movie/day');
+  return data?.results || [];
+};
+
 // Filmleri Listeleme ve Modal Açma
-async function renderMovies(movieCount = 3) {
+const renderMovies = async (movieCount = 3) => {
   const movieContainer = document.querySelector('.weeklyTrendsContent');
   movieContainer.innerHTML = '';
 
@@ -53,18 +48,20 @@ async function renderMovies(movieCount = 3) {
       getGenres(),
     ]);
 
-    if (!movies || !movies.results?.length) {
-      console.log('Film bulunamadı.');
+    if (!movies.length) {
+      console.warn('Film bulunamadı.');
+      movieContainer.innerHTML = '<p>Film bulunamadı.</p>';
       return;
     }
 
-    movies.results.slice(0, movieCount).forEach(movie => {
+    movies.slice(0, movieCount).forEach(movie => {
       const imageUrl = movie.poster_path
         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
         : DEFAULT_POSTER;
-      const genres = movie.genre_ids
-        .map(id => genreMap[id] || 'Unknown')
-        .join(', ');
+      const genres =
+        movie.genre_ids?.map(id => genreMap[id] || 'Unknown').join(', ') ||
+        'Bilinmiyor';
+      const releaseDate = movie.release_date || 'Tarih bilinmiyor';
 
       // Film kartını oluştur
       const movieElement = document.createElement('div');
@@ -76,7 +73,7 @@ async function renderMovies(movieCount = 3) {
         <img class="MovieCardİmg" src="${imageUrl}" alt="${movie.title}" />
         <div class="gradient-container"></div>
         <h3>${movie.title}</h3>
-        <p>${genres} / ${movie.release_date || 'Tarih bilinmiyor'}</p>
+        <p>${genres} / ${releaseDate}</p>
       `;
 
       // Film kartına tıklama event'i ekle (Modal Açma)
@@ -89,10 +86,10 @@ async function renderMovies(movieCount = 3) {
     movieContainer.innerHTML =
       '<p>Failed to load movies. Please try again later.</p>';
   }
-}
+};
 
 // Modalı Açma Fonksiyonu
-function openModal(movie) {
+const openModal = movie => {
   const modal = document.querySelector('#WTmovieModal');
   const modalContent = document.querySelector('.WTmodal-content');
 
@@ -100,9 +97,6 @@ function openModal(movie) {
     console.error('Modal elemanları bulunamadı.');
     return;
   }
-
-  // Önce içeriği temizle
-  modalContent.innerHTML = '';
 
   const posterUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
@@ -138,10 +132,12 @@ function openModal(movie) {
 
   window.addEventListener('click', closeModal);
   window.addEventListener('keydown', closeModal); // ESC tuşu ile kapatma
-}
+};
 
 // Sayfa açıldığında ilk 3 filmi göster
-document.addEventListener('DOMContentLoaded', () => renderMovies(3));
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => renderMovies(3), 100);
+});
 
 // "View All" Butonu → Katalog Sayfasına Yönlendirme
 document.querySelector('#viewAll')?.addEventListener('click', () => {
