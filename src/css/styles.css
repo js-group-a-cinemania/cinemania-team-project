@@ -1873,10 +1873,6 @@ body.light-theme .footerContent {
 
 /* Masaüstü - 1280px ve sonrası */
 @media screen and (min-width: 1280px) {
-  .library-movies {
-    display: flex;
-    gap: 12px;
-  }
   .SectionHero {
     width: 1280px;
     height: 720px;
