@@ -173,9 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-//! MOBIL MENU SON
-
-//!MOVIE SEARCH
+//! MOVIE SEARCH
 
 document.addEventListener('DOMContentLoaded', function () {
   const searchForm = document.getElementById('search-form');
@@ -215,9 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-//!MOVIE SEARCH SONU
-
-
+//! MOVIE SEARCH SONU
 
 //! PAGINATION KISMI
 
@@ -225,7 +221,6 @@ const paginationContainer = document.getElementById('pagination-container');
 let currentPage = 1;
 const maxPagesToFetch = 500;
 let totalPages = 1;
-
 
 async function fetchMovies(page = 1, year = '') {
   try {
@@ -250,8 +245,6 @@ async function fetchMovies(page = 1, year = '') {
   }
 }
 
-
-
 function renderPagination() {
   paginationContainer.innerHTML = '';
 
@@ -262,7 +255,6 @@ function renderPagination() {
     `;
   }
 
-
   if (currentPage > 1) {
     paginationHTML += `
       <button class="pagination-btn" onclick="changePage(${
@@ -270,7 +262,6 @@ function renderPagination() {
       })">&lt;</button>
     `;
   }
-
 
   if (currentPage > 3) {
     paginationHTML += `<span class="pagination-dots">...</span>`;
@@ -292,7 +283,6 @@ function renderPagination() {
     paginationHTML += `<span class="pagination-dots">...</span>`;
   }
 
-
   if (currentPage < totalPages) {
     paginationHTML += `
       <button class="pagination-btn" onclick="changePage(${
@@ -300,7 +290,6 @@ function renderPagination() {
       })">&gt;</button>
     `;
   }
-
 
   if (currentPage < totalPages) {
     paginationHTML += `
@@ -311,30 +300,21 @@ function renderPagination() {
   paginationContainer.innerHTML = paginationHTML;
 }
 
-
 window.changePage = function (page) {
   if (page < 1 || page > totalPages) return;
   currentPage = page;
   fetchMovies(page);
 };
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  fetchMovies();
-});
-
-//! PAGINATION SONU
-
-
-
-//! YILLARA GÖRE MOVIE SEARCH
+// YILLARA GÖRE MOVIE SEARCH
 
 const yearDropdown = document.querySelector('.year-dropdown');
 
 async function fetchYears() {
   try {
     let years = new Set();
-    for (let page = 1; page <= 5; page++) {
+    for (let page = 1; page <= 10; page++) {
+      // Daha fazla sayfa üzerinden yıl verisi çekmek için sayfa sayısını arttırıyoruz
       const response = await fetch(
         `${baseUrl}/movie/popular?api_key=${apiKey}&page=${page}`
       );
@@ -348,7 +328,7 @@ async function fetchYears() {
       });
     }
 
-    populateYearDropdown([...years].sort((a, b) => b - a));
+    populateYearDropdown([...years].sort((a, b) => b - a)); // Yılları azalan sıraya göre sıralıyoruz
   } catch (error) {
     console.error('Yıllar alınırken hata oluştu:', error);
   }
@@ -356,18 +336,13 @@ async function fetchYears() {
 
 function populateYearDropdown(years) {
   yearDropdown.innerHTML =
-    '<option value="">All Movies</option>' +
+    '<option value="">Select Year</option>' +
     years.map(year => `<option value="${year}">${year}</option>`).join('');
 }
 
 yearDropdown.addEventListener('change', function () {
   const selectedYear = this.value;
-  fetchMovies(1, selectedYear);
+  fetchMovies(1, selectedYear); // Yıla göre film araması yapılacak
 });
 
-
 document.addEventListener('DOMContentLoaded', fetchYears);
-
-
-
-//! YILLARA GÖRE MOVIE SEARCH SONU
