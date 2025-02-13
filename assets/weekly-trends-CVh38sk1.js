@@ -11,4 +11,4 @@ import{a as y}from"./vendor-DW_MHI2K.js";(function(){const n=document.createElem
     <p><strong>Popularity:</strong> ${t.popularity||"Bilinmiyor"}</p>
     <p><strong>Overview:</strong> ${t.overview||"Açıklama mevcut değil."}</p>
   `,n.style.display="block";const e=s=>{(s.target===n||s.target.classList.contains("close")||s.key==="Escape")&&(n.style.display="none",window.removeEventListener("click",e),window.removeEventListener("keydown",e))};window.addEventListener("click",e),window.addEventListener("keydown",e)};document.addEventListener("DOMContentLoaded",()=>{setTimeout(()=>L(3),100)});var c;(c=document.querySelector("#viewAll"))==null||c.addEventListener("click",()=>{window.location.href="catalog.html"});
-//# sourceMappingURL=weekly-trends-BfGiQ-WG.js.map
+//# sourceMappingURL=weekly-trends-CVh38sk1.js.map
