@@ -51,4 +51,5 @@ async function fetchUpcomingMovies() {
 }
 
 // FONKSİYONU ÇAĞIR
-document.addEventListener('DOMContentLoaded', fetchUpcomingMovies);
+const callUp = document.addEventListener('DOMContentLoaded', fetchUpcomingMovies);
+export default callUp()
