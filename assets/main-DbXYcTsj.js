@@ -43,12 +43,12 @@ const L=document.getElementById("pagination-container");let l=1;const b=500;let 
     `),l<m&&(e+=`
       <button class="pagination-btn" onclick="changePage(${m})">&raquo;</button>
     `),L.innerHTML=e}window.changePage=function(e){e<1||e>m||(l=e,B(e))};document.addEventListener("DOMContentLoaded",()=>{B()});//! PAGINATION SONU
-window.global||(window.global=window);const N="cacaf4fb30e4adeda0cb251474aaa7da",R="https://api.themoviedb.org/3";async function U(){try{const e=await C.get(`${R}/movie/upcoming`,{params:{api_key:N,language:"en-US",page:"1"}});console.log("Upcoming Movies Response:",e.data);const t=e.data.results;let n="";if(t.length>0){const a=t[0],s=a.poster_path?`https://image.tmdb.org/t/p/w500${a.poster_path}`:"https://via.placeholder.com/500x750?text=No+Image";n+=`
+window.global||(window.global=window);console.log("Upcoming.js dosyası yüklendi!");const N="cacaf4fb30e4adeda0cb251474aaa7da",R="https://api.themoviedb.org/3";async function U(){try{const e=await C.get(`${R}/movie/upcoming`,{params:{api_key:N,language:"en-US",page:"1"}});console.log("Upcoming Movies Response:",e.data);const t=e.data.results;let n="";if(t.length>0){const a=t[0],s=a.poster_path?`https://image.tmdb.org/t/p/w500${a.poster_path}`:"https://via.placeholder.com/500x750?text=No+Image";n+=`
         <div class="UpcomingMovie">
           <img class="MoviePoster" src="${s}" alt="${a.title} Poster" />
           <h2 class="MovieTitle">${a.title}</h2>
           <p class="ReleaseDate">Release Date: ${a.release_date}</p>
           <p class="Overview">${a.overview}</p>
           <button type="button" class="addToLibraryButton">Add to my library</button>
-        </div>`}const o=document.querySelector(".movieInfoContent");o?o.innerHTML=n:console.error("Belirtilen .movieInfoContent div'i bulunamadı.")}catch(e){console.error("Upcoming filmleri alırken hata oluştu:",e.response?e.response.data:e.message)}}const Y=document.addEventListener("DOMContentLoaded",U);Y();
-//# sourceMappingURL=main-D3GZzQuB.js.map
+        </div>`}const o=document.querySelector(".movieInfoContent");o?o.innerHTML=n:console.error("Belirtilen .movieInfoContent div'i bulunamadı.")}catch(e){console.error("Upcoming filmleri alırken hata oluştu:",e.response?e.response.data:e.message)}}document.addEventListener("DOMContentLoaded",U);
+//# sourceMappingURL=main-DbXYcTsj.js.map
