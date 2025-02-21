@@ -69,6 +69,31 @@ export function displayLibraryMovies() {
   });
 }
 
+//! MOBIL MENU
+document.addEventListener('DOMContentLoaded', function () {
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobilMenu = document.getElementById('mobil');
+  const backdrop = document.getElementById('backdrop');
+  const mobilNav = document.getElementById('mobil-nav');
+
+  menuToggle.addEventListener('click', function (event) {
+    event.preventDefault();
+    mobilMenu.classList.add('active');
+    backdrop.classList.add('active');
+    mobilNav.style.display = 'block';
+  });
+
+  document.addEventListener('click', function (event) {
+    const isClickInsideMenu = mobilMenu.contains(event.target);
+    const isClickOnMenuToggle = menuToggle.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnMenuToggle) {
+      mobilMenu.classList.remove('active');
+      backdrop.classList.remove('active');
+    }
+  });
+});
+
 // 📌 Tür Filtresini Dolduran Fonksiyon
 function populateGenreFilter() {
   const genreFilter = document.getElementById('genreFilter');

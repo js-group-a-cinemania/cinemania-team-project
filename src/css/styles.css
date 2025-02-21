@@ -70,9 +70,6 @@ a {
   text-decoration: none;
   color: inherit;
 }
-.container {
-  max-width: 1280px;
-}
 
 .library-container {
   display: flex;
@@ -372,6 +369,19 @@ a {
 @media (max-width: 480px) {
   .movie-card {
     flex: 1 1 100%;
+  }
+  .library-section{
+    max-width: 382px;
+  }
+  .toggle-container {
+    position: absolute;
+    top: 20px !important;
+    right: 20px !important;
+  }
+  
+  .header-logo a img{
+    margin-top: 12px;
+    margin-left: 12px;
   }
 }
 
