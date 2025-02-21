@@ -1,4 +1,5 @@
 import axios from 'axios';
+console.log("Upcoming.js dosyası yüklendi!");
 
 const API_KEY = 'cacaf4fb30e4adeda0cb251474aaa7da';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -52,4 +53,4 @@ async function fetchUpcomingMovies() {
 
 // FONKSİYONU ÇAĞIR
 const callUp = document.addEventListener('DOMContentLoaded', fetchUpcomingMovies);
-export default callUp()
+export default callUp;
