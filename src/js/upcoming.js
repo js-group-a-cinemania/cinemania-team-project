@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = 'cACAF4FB30E4ADEDA0CB251474AAA7DA';
+const API_KEY = 'cacaf4fb30e4adeda0cb251474aaa7da';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 // UPCOMING FİLMLERİ ÇEKME FONKSİYONU
@@ -22,7 +22,8 @@ async function fetchUpcomingMovies() {
 
     // HTML İçeriği Oluşturma
     let movieHTML = '';
-    movies.forEach(movie => {
+    if (movies.length > 0) {
+      const movie = movies[0];
       const posterURL = movie.poster_path 
                         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` 
                         : 'https://via.placeholder.com/500x750?text=No+Image';
@@ -34,7 +35,7 @@ async function fetchUpcomingMovies() {
           <p class="Overview">${movie.overview}</p>
           <button type="button" class="addToLibraryButton">Add to my library</button>
         </div>`;
-    });
+    }
 
     // DOM'a Ekliyoruz
     const updateDiv = document.querySelector('.movieInfoContent');
