@@ -1,56 +1,91 @@
 import axios from 'axios';
-console.log("Upcoming.js dosyası yüklendi!");
 
 const API_KEY = 'cacaf4fb30e4adeda0cb251474aaa7da';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-// UPCOMING FİLMLERİ ÇEKME FONKSİYONU
+let movieLibrary = JSON.parse(localStorage.getItem('movieLibrary')) || [];
+
 async function fetchUpcomingMovies() {
   try {
-    // API'den Upcoming Filmleri Çekiyoruz
     const response = await axios.get(`${BASE_URL}/movie/upcoming`, {
       params: {
-        api_key: API_KEY, // API_KEY burada kullanılıyor!
+        api_key: API_KEY,
         language: 'en-US',
-        page: '1'
-      }
+        page: '1',
+      },
     });
 
-    console.log("Upcoming Movies Response:", response.data); // Debug için
-
-    // Filmleri Alıyoruz
     const movies = response.data.results;
 
-    // HTML İçeriği Oluşturma
     let movieHTML = '';
     if (movies.length > 0) {
-      const movie = movies[0];
-      const posterURL = movie.poster_path 
-                        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` 
-                        : 'https://via.placeholder.com/500x750?text=No+Image';
-      movieHTML += `
+      const movie = movies[0]; // Sadece ilk filmi alıyoruz
+      const posterURL = movie.poster_path
+        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        : 'https://via.placeholder.com/500x750?text=No+Image';
+      const isInLibrary = movieLibrary.some(
+        libMovie => libMovie.id === movie.id
+      );
+
+      movieHTML = `
         <div class="UpcomingMovie">
-          <img class="MoviePoster" src="${posterURL}" alt="${movie.title} Poster" />
+          <img class="MoviePoster" src="${posterURL}" alt="${
+        movie.title
+      } Poster" />
           <h2 class="MovieTitle">${movie.title}</h2>
           <p class="ReleaseDate">Release Date: ${movie.release_date}</p>
           <p class="Overview">${movie.overview}</p>
-          <button type="button" class="addToLibraryButton">Add to my library</button>
+          <button type="button" class="addToLibraryButton" data-movie-id="${
+            movie.id
+          }">
+            ${isInLibrary ? 'Remove from library' : 'Add to my library'}
+          </button>
         </div>`;
     }
 
-    // DOM'a Ekliyoruz
     const updateDiv = document.querySelector('.movieInfoContent');
     if (updateDiv) {
       updateDiv.innerHTML = movieHTML;
-    } else {
-      console.error("Belirtilen .movieInfoContent div'i bulunamadı.");
     }
 
+    document.querySelectorAll('.addToLibraryButton').forEach(button => {
+      button.addEventListener('click', handleLibraryAction);
+    });
   } catch (error) {
-    console.error('Upcoming filmleri alırken hata oluştu:', error.response ? error.response.data : error.message);
+    console.error(
+      'Upcoming filmleri alırken hata oluştu:',
+      error.response ? error.response.data : error.message
+    );
   }
 }
 
-// FONKSİYONU ÇAĞIR
-const callUp = document.addEventListener('DOMContentLoaded', fetchUpcomingMovies);
+function handleLibraryAction(event) {
+  const button = event.target;
+  const movieId = button.getAttribute('data-movie-id');
+  const movieTitle = button
+    .closest('.UpcomingMovie')
+    .querySelector('.MovieTitle').innerText;
+
+  const movie = {
+    id: movieId,
+    title: movieTitle,
+  };
+
+  const isInLibrary = movieLibrary.some(libMovie => libMovie.id === movie.id);
+
+  if (isInLibrary) {
+    movieLibrary = movieLibrary.filter(libMovie => libMovie.id !== movie.id);
+    button.innerText = 'Add to my library';
+  } else {
+    movieLibrary.push(movie);
+    button.innerText = 'Remove from library';
+  }
+
+  localStorage.setItem('movieLibrary', JSON.stringify(movieLibrary));
+}
+
+const callUp = document.addEventListener(
+  'DOMContentLoaded',
+  fetchUpcomingMovies
+);
 export default callUp;
