@@ -2148,11 +2148,13 @@ body.light-theme .footerContent {
   }
   .movieInfoContent {
     flex-direction: row;
-    margin-left: 16px;
   }
   .UpdateImg {
     width: 805px;
     height: 458px;
+  }
+  .movieInfoContent {
+    margin-left: 16px;
   }
 
   .siteFooter {
