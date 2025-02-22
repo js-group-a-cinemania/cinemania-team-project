@@ -4,7 +4,8 @@ const API_KEY = '9a0d30072ad38e4a4c69d8b167f5dfc1';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const DEFAULT_POSTER = 'yedek-gorsel-url.jpg';
 
-// API İsteklerini Doğru Formatta Yap
+let movieLibrary = JSON.parse(localStorage.getItem('movieLibrary')) || [];
+
 const fetchFromAPI = async (endpoint, params = {}) => {
   try {
     const response = await axios.get(`${BASE_URL}${endpoint}`, {
@@ -13,14 +14,13 @@ const fetchFromAPI = async (endpoint, params = {}) => {
     return response.data;
   } catch (error) {
     console.error(
-      `API isteği basarisiz (${endpoint}):`,
+      `API isteği başarısız (${endpoint}):`,
       error.response?.data || error.message
     );
     return null;
   }
 };
 
-// Film türlerini çekip ID → isim dönüşümü yap
 const getGenres = async () => {
   const data = await fetchFromAPI('/genre/movie/list');
   return (
@@ -31,13 +31,11 @@ const getGenres = async () => {
   );
 };
 
-// Günlük trend filmleri getir
 const fetchTrendingMovies = async () => {
   const data = await fetchFromAPI('/trending/movie/day');
   return data?.results || [];
 };
 
-// Filmleri Listeleme ve Modal Açma
 const renderMovies = async (movieCount = 3) => {
   const movieContainer = document.querySelector('.weeklyTrendsContent');
   movieContainer.innerHTML = '';
@@ -63,7 +61,6 @@ const renderMovies = async (movieCount = 3) => {
         'Bilinmiyor';
       const releaseDate = movie.release_date || 'Tarih bilinmiyor';
 
-      // Film kartını oluştur
       const movieElement = document.createElement('div');
       movieElement.classList.add('MovieCard');
       movieElement.style.cursor = 'pointer';
@@ -74,11 +71,10 @@ const renderMovies = async (movieCount = 3) => {
         <div class="gradient-container"></div>
         <h3>${movie.title}</h3>
         <p>${genres} / ${releaseDate}</p>
+        <div class="stars">${getStarRating(movie.vote_average)}</div>
       `;
 
-      // Film kartına tıklama event'i ekle (Modal Açma)
-      movieElement.addEventListener('click', () => openModal(movie));
-
+      movieElement.addEventListener('click', () => openModal(movie, genreMap));
       movieContainer.appendChild(movieElement);
     });
   } catch (error) {
@@ -88,8 +84,12 @@ const renderMovies = async (movieCount = 3) => {
   }
 };
 
-// Modalı Açma Fonksiyonu
-const openModal = movie => {
+const getStarRating = vote => {
+  const fullStars = Math.round(vote) / 2;
+  return '⭐'.repeat(Math.floor(fullStars));
+};
+
+const openModal = (movie, genreMap) => {
   const modal = document.querySelector('#WTmovieModal');
   const modalContent = document.querySelector('.WTmodal-content');
 
@@ -101,23 +101,28 @@ const openModal = movie => {
   const posterUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     : DEFAULT_POSTER;
+  const isInLibrary = movieLibrary.some(libMovie => libMovie.id === movie.id);
+  const genres =
+    movie.genre_ids?.map(id => genreMap[id] || 'Unknown').join(', ') ||
+    'Bilinmiyor';
 
   modalContent.innerHTML = `
     <span class="close">&times;</span>
     <img src="${posterUrl}" alt="${movie.title}" class="WTmodal-img"/>
     <h2>${movie.title}</h2>
-    <p><strong>Release Date:</strong> ${
-      movie.release_date || 'Tarih bilinmiyor'
-    }</p>
-    <p><strong>Popularity:</strong> ${movie.popularity || 'Bilinmiyor'}</p>
-    <p><strong>Overview:</strong> ${
-      movie.overview || 'Açıklama mevcut değil.'
-    }</p>
+    <p><strong>Vote / Votes:</strong> ${movie.vote_average.toFixed(1)} / ${
+    movie.vote_count
+  }</p>
+    <p><strong>Popularity:</strong> ${movie.popularity}</p>
+    <p><strong>Genre:</strong> ${genres}</p>
+    <p><strong>About:</strong> ${movie.overview || 'Açıklama mevcut değil.'}</p>
+    <button class="addToLibraryButton" data-movie-id="${movie.id}">
+      ${isInLibrary ? 'Remove from library' : 'Add to my library'}
+    </button>
   `;
 
   modal.style.display = 'block';
 
-  // Modal kapatma event'leri
   const closeModal = event => {
     if (
       event.target === modal ||
@@ -131,15 +136,30 @@ const openModal = movie => {
   };
 
   window.addEventListener('click', closeModal);
-  window.addEventListener('keydown', closeModal); // ESC tuşu ile kapatma
+  window.addEventListener('keydown', closeModal);
+
+  const button = modalContent.querySelector('.addToLibraryButton');
+  button.addEventListener('click', () => handleLibraryAction(movie, button));
 };
 
-// Sayfa açıldığında ilk 3 filmi göster
+const handleLibraryAction = (movie, button) => {
+  const isInLibrary = movieLibrary.some(libMovie => libMovie.id === movie.id);
+
+  if (isInLibrary) {
+    movieLibrary = movieLibrary.filter(libMovie => libMovie.id !== movie.id);
+    button.innerText = 'Add to my library';
+  } else {
+    movieLibrary.push(movie);
+    button.innerText = 'Remove from library';
+  }
+
+  localStorage.setItem('movieLibrary', JSON.stringify(movieLibrary));
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => renderMovies(3), 100);
 });
 
-// "View All" Butonu → Katalog Sayfasına Yönlendirme
 document.querySelector('#viewAll')?.addEventListener('click', () => {
-  window.location.href = 'catalog.html';
+  window.location.href = `${window.location.origin}/cinemania-team-project/catalog.html`;
 });
