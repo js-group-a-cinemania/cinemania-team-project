@@ -84,8 +84,6 @@ function handleLibraryAction(event) {
   localStorage.setItem('movieLibrary', JSON.stringify(movieLibrary));
 }
 
-const callUp = document.addEventListener(
-  'DOMContentLoaded',
-  fetchUpcomingMovies
-);
-export default callUp;
+document.addEventListener('DOMContentLoaded', fetchUpcomingMovies);
+
+export default fetchUpcomingMovies;
