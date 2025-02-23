@@ -1,5 +1,5 @@
 import './js/init';
-import "./js/upcoming.js";
+import "./js/upComing.js";
 import "./js/weekly-trends.js";
 import "./js/footer.js";
 import "./js/library.js";
