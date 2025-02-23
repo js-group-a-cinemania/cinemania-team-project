@@ -84,6 +84,6 @@ function handleLibraryAction(event) {
   localStorage.setItem('movieLibrary', JSON.stringify(movieLibrary));
 }
 
-document.addEventListener('DOMContentLoaded', fetchUpcomingMovies);
+document.addEventListener('DOMContentLoaded', fetchUpcomingMovies());
 
 export default fetchUpcomingMovies;
