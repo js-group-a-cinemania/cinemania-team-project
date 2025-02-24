@@ -163,3 +163,13 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelector('#viewAll')?.addEventListener('click', () => {
   window.location.href = `${window.location.origin}/cinemania-team-project/catalog.html`;
 });
+
+// dark-light mode için fonksyon
+
+document
+  .getElementById('darkmode-toggle')
+  .addEventListener('change', function () {
+    document.querySelector('.weeklyTrendsTitle').style.color = this.checked
+      ? ''
+      : '#111111';
+  });

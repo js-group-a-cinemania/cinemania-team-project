@@ -87,3 +87,13 @@ function handleLibraryAction(event) {
 document.addEventListener('DOMContentLoaded', fetchUpcomingMovies);
 
 export default fetchUpcomingMovies;
+
+// dark-light mode için fonksyon
+
+document
+  .getElementById('darkmode-toggle')
+  .addEventListener('change', function () {
+    document.querySelector('.sectionUpComingTitle').style.color = this.checked
+      ? ''
+      : '#111111';
+  });
