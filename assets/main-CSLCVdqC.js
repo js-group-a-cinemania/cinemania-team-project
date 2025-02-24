@@ -86,4 +86,4 @@ document.addEventListener("DOMContentLoaded",()=>{document.addEventListener("cli
       ${r?"Remove from library":"Add to my library"}
     </button>
   `,n.style.display="block";const l=d=>{(d.target===n||d.target.classList.contains("close")||d.key==="Escape")&&(n.style.display="none",window.removeEventListener("click",l),window.removeEventListener("keydown",l))};window.addEventListener("click",l),window.addEventListener("keydown",l);const s=o.querySelector(".addToLibraryButton");s.addEventListener("click",()=>oe(e,s))},oe=(e,t)=>{p.some(o=>o.id===e.id)?(p=p.filter(o=>o.id!==e.id),t.innerText="Add to my library"):(p.push(e),t.innerText="Remove from library"),localStorage.setItem("movieLibrary",JSON.stringify(p))};document.addEventListener("DOMContentLoaded",()=>{setTimeout(()=>ee(3),100)});var k;(k=document.querySelector("#viewAll"))==null||k.addEventListener("click",()=>{window.location.href=`${window.location.origin}/cinemania-team-project/catalog.html`});
-//# sourceMappingURL=main-D9JMGUQ2.js.map
+//# sourceMappingURL=main-CSLCVdqC.js.map
