@@ -3791,3 +3791,6 @@ body.dark-mode {
     border: none;
   }
 }
+.UpcomingMovieContent {
+  padding-left: 20px;
+}

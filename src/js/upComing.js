@@ -26,12 +26,25 @@ async function fetchUpcomingMovies() {
 
       movieHTML = `
         <div class="UpcomingMovie">
-          <img class="MoviePoster" src="${posterURL}" alt="${
+          <img class="UpdateImg" src="${posterURL}" alt="${
         movie.title
       } Poster" />
-          <h2 class="MovieTitle">${movie.title}</h2>
-          <p class="ReleaseDate">Release Date: ${movie.release_date}</p>
-          <p class="Overview">${movie.overview}</p>
+      </div>
+      <div class="UpcomingMovieContent">
+          <h2 class="DetailsTitle">${movie.title}</h2>
+          <p class="DetailsContent">Release date <span class="SpanDate">${
+            movie.release_date
+          }</span></p>
+          <p class="DetailsContent">Vote / Votes <span class="SpanVotes"><span class="SpanVote">${
+            movie.vote_average
+          }</span> / <span class="SpanVote">${
+        movie.vote_count
+      }</span></span></p>
+          <p class="DetailsContent">Popularity <span class="SpanPopular">${
+            movie.popularity
+          }</span></p>
+          <h3 class="DetailsAbout">ABOUT</h3>
+          <p class="AboutContent">${movie.overview}</p>    
           <button type="button" class="addToLibraryButton" data-movie-id="${
             movie.id
           }">
