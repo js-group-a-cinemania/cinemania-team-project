@@ -110,3 +110,17 @@ document
       ? ''
       : '#111111';
   });
+
+document
+  .getElementById('darkmode-toggle')
+  .addEventListener('change', function () {
+    document.querySelector('.AboutContent').style.color = this.checked ? '' : '#282828';
+  });
+
+  document
+    .getElementById('darkmode-toggle')
+    .addEventListener('change', function () {
+      document.querySelector('.SpanPopular').style.color = this.checked
+        ? ''
+        : '#282828';
+    });
