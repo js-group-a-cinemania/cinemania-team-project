@@ -1,3 +1,4 @@
+import axios from 'axios';
 const API_KEY = 'cacaf4fb30e4adeda0cb251474aaa7da';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -24,32 +25,36 @@ async function fetchUpcomingMovies() {
         libMovie => Number(libMovie.id) === Number(movie.id)
       );
 
+      const genres = await getGenres();
+      const genreNames = movie.genre_ids.map(id => genres[id]).join(', ');
+
       movieHTML = `
         <div class="UpcomingMovie">
           <img class="UpdateImg" src="${posterURL}" alt="${
         movie.title
       } Poster" />
-      </div>
-      <div class="UpcomingMovieContent">
-          <h2 class="DetailsTitle">${movie.title}</h2>
-          <p class="DetailsContent">Release date <span class="SpanDate">${
-            movie.release_date
-          }</span></p>
-          <p class="DetailsContent">Vote / Votes <span class="SpanVotes"><span class="SpanVote">${
-            movie.vote_average
-          }</span> / <span class="SpanVote">${
+          <div class="UpcomingMovieContent">
+            <h2 class="DetailsTitle">${movie.title}</h2>
+            <p class="DetailsContent">Release date <span class="SpanDate">${
+              movie.release_date
+            }</span></p>
+            <p class="DetailsContent">Vote / Votes <span class="SpanVotes"><span class="SpanVote">${
+              movie.vote_average
+            }</span> / <span class="SpanVote">${
         movie.vote_count
       }</span></span></p>
-          <p class="DetailsContent">Popularity <span class="SpanPopular">${
-            movie.popularity
-          }</span></p>
-          <h3 class="DetailsAbout">ABOUT</h3>
-          <p class="AboutContent">${movie.overview}</p>    
-          <button type="button" class="addToLibraryButton" data-movie-id="${
-            movie.id
-          }">
-            ${isInLibrary ? 'Remove from library' : 'Add to my library'}
-          </button>
+            <p class="DetailsContent">Popularity <span class="SpanPopular">${
+              movie.popularity
+            }</span></p>
+            <p class="DetailsContent">Genre <span class="SpanGenre">${genreNames}</span></p>
+            <h3 class="DetailsAbout">ABOUT</h3>
+            <p class="AboutContent">${movie.overview}</p>    
+            <button type="button" class="addToLibraryButton" data-movie-id="${
+              movie.id
+            }">
+              ${isInLibrary ? 'Remove from library' : 'Add to my library'}
+            </button>
+          </div>
         </div>`;
     }
 
@@ -66,12 +71,28 @@ async function fetchUpcomingMovies() {
   }
 }
 
+async function getGenres() {
+  try {
+    const response = await axios.get(`${BASE_URL}/genre/movie/list`, {
+      params: { language: 'en-US', api_key: API_KEY },
+    });
+
+    return response.data.genres.reduce((acc, genre) => {
+      acc[genre.id] = genre.name;
+      return acc;
+    }, {});
+  } catch (error) {
+    console.error('Türleri alırken hata oluştu:', error);
+    return {};
+  }
+}
+
 function handleLibraryAction(event) {
   const button = event.target;
   const movieId = button.getAttribute('data-movie-id');
   const movieTitleElement = button
     .closest('.UpcomingMovie')
-    ?.querySelector('.MovieTitle');
+    ?.querySelector('.DetailsTitle');
   if (!movieTitleElement) return;
   const movieTitle = movieTitleElement.innerText;
 
@@ -101,26 +122,18 @@ document.addEventListener('DOMContentLoaded', fetchUpcomingMovies);
 
 export default fetchUpcomingMovies;
 
-// dark-light mode için fonksyon
-
+// Dark-light mode için fonksiyon
 document
   .getElementById('darkmode-toggle')
   .addEventListener('change', function () {
-    document.querySelector('.sectionUpComingTitle').style.color = this.checked
+    const isChecked = this.checked;
+    document.querySelector('.sectionUpComingTitle').style.color = isChecked
       ? ''
       : '#111111';
+    document.querySelector('.AboutContent').style.color = isChecked
+      ? ''
+      : '#282828';
+    document.querySelector('.SpanPopular').style.color = isChecked
+      ? ''
+      : '#282828';
   });
-
-document
-  .getElementById('darkmode-toggle')
-  .addEventListener('change', function () {
-    document.querySelector('.AboutContent').style.color = this.checked ? '' : '#282828';
-  });
-
-  document
-    .getElementById('darkmode-toggle')
-    .addEventListener('change', function () {
-      document.querySelector('.SpanPopular').style.color = this.checked
-        ? ''
-        : '#282828';
-    });
