@@ -3794,3 +3794,6 @@ body.dark-mode {
 .UpcomingMovieContent {
   padding-left: 20px;
 }
+.UpcomingMovie {
+  display: flex;
+}
