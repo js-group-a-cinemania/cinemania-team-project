@@ -3638,7 +3638,7 @@ body.dark-mode {
   .section-hero-img {
     position: absolute;
     top: 48px;
-    right: 300px;
+    right: 10px;
     max-width: 1000px;
     width: 100%;
     object-fit: cover;
