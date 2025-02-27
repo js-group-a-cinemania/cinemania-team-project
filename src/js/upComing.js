@@ -136,4 +136,10 @@ document
     document.querySelector('.SpanPopular').style.color = isChecked
       ? ''
       : '#282828';
+    document.querySelector('body').style.backgroundColor = isChecked
+      ? '#000000'
+      : '';
+    document.querySelector('.logo-text').style.color = isChecked
+      ? '#ffffff'
+      : '';
   });
