@@ -1,0 +1,2 @@
+document.addEventListener("DOMContentLoaded",function(){const n=document.getElementById("modalTeam"),e=document.querySelector(".footerButton"),t=document.querySelector(".modalCloseButton");e.onclick=function(){n.style.display="block"},t.onclick=function(){n.style.display="none"},window.onclick=function(o){o.target===n&&(n.style.display="none")},document.onkeydown=function(o){o.key==="Escape"&&(n.style.display="none")}});
+//# sourceMappingURL=footer-Cc6FgX3v.js.map
