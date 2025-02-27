@@ -68,7 +68,7 @@ const renderMovies = async (movieCount = 3) => {
 
       movieElement.innerHTML = `
         <img class="MovieCardİmg" src="${imageUrl}" alt="${movie.title}" />
-        <div class="gradient-container"></div>
+        <div class="weekly-gradient-container"></div>
         <h3>${movie.title}</h3>
         <p>${genres} / ${releaseDate}</p>
         <div class="stars">${getStarRating(movie.vote_average)}</div>
