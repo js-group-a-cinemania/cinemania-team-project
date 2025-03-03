@@ -368,6 +368,13 @@ a {
   font-style: normal;
   font-weight: 400;
 }
+.UpcomingMovie{
+  display: flex;
+  flex-direction: column;
+}
+.UpdateImg {
+  width: 320px;
+}
 
 @media (max-width: 1024px) {
   .movie-card {
@@ -1340,6 +1347,9 @@ body.dark-mode {
     right: 10px;
     bottom: 10px;
   }
+}
+.UpcomingMovie {
+  flex-direction: row;
 }
 
 /* desktop */
