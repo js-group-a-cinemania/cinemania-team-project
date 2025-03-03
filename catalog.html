@@ -15,80 +15,105 @@
     <link rel="stylesheet" crossorigin href="/cinemania-team-project/assets/main-BmQnGBYN.css">
   </head>
   <body>
-    <!-- TOGGLE BÖLÜMÜ -->
-    <div class="toggle-container">
-      <input type="checkbox" id="darkmode-toggle" />
-      <label for="darkmode-toggle" class="toggle-label">
-        <span class="toggle-icon sun"
-          ><svg
-            width="11"
-            height="10"
-            viewBox="0 0 11 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.73643 7.86256C7.36422 7.86256 8.6838 6.58046 8.6838 4.99892C8.6838 3.41738 7.36422 2.13528 5.73643 2.13528C4.10864 2.13528 2.78906 3.41738 2.78906 4.99892C2.78906 6.58046 4.10864 7.86256 5.73643 7.86256Z"
-              stroke="white"
-              stroke-width="0.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M8.98379 1.84669L9.044 1.78819M2.4301 8.21419L2.49031 8.15569M5.73705 0.53719V0.50119M5.73705 9.50119V9.46519M1.14252 5.00119H1.10547M10.3686 5.00119H10.3316M2.49031 1.84669L2.4301 1.78819M9.044 8.21419L8.98379 8.15569"
-              stroke="white"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-        <span class="toggle-icon moon"
-          ><svg
-            width="11"
-            height="11"
-            viewBox="0 0 11 11"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0.950868 5.83081C1.12805 8.34079 3.27888 10.3829 5.85299 10.495C7.66914 10.573 9.29334 9.73469 10.2679 8.4139C10.6714 7.87291 10.4549 7.51226 9.7806 7.6341C9.45084 7.69258 9.11123 7.71695 8.75686 7.70233C6.3501 7.60486 4.38137 5.61149 4.37153 3.25747C4.36661 2.62388 4.49949 2.02441 4.74066 1.47855C5.00644 0.874205 4.68652 0.586653 4.0713 0.844962C2.12226 1.65888 0.788448 3.60351 0.950868 5.83081Z"
-              stroke="white"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-        <span class="toggle-ball"></span>
-      </label>
-    </div>
-    <!-- TOGGLE BÖLÜM SONU -->
+    <div id="headerTotalContainer">
+      <div class="toggle-container">
+        <input type="checkbox" id="darkmode-toggle" />
+        <label for="darkmode-toggle" class="toggle-label">
+          <span class="toggle-icon sun">
+            <svg
+              width="11"
+              height="10"
+              viewBox="0 0 11 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.73643 7.86256C7.36422 7.86256 8.6838 6.58046 8.6838 4.99892C8.6838 3.41738 7.36422 2.13528 5.73643 2.13528C4.10864 2.13528 2.78906 3.41738 2.78906 4.99892C2.78906 6.58046 4.10864 7.86256 5.73643 7.86256Z"
+                stroke="white"
+                stroke-width="0.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M8.98379 1.84669L9.044 1.78819M2.4301 8.21419L2.49031 8.15569M5.73705 0.53719V0.50119M5.73705 9.50119V9.46519M1.14252 5.00119H1.10547M10.3686 5.00119H10.3316M2.49031 1.84669L2.4301 1.78819M9.044 8.21419L8.98379 8.15569"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="toggle-icon moon"
+            ><svg
+              width="11"
+              height="11"
+              viewBox="0 0 11 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.950868 5.83081C1.12805 8.34079 3.27888 10.3829 5.85299 10.495C7.66914 10.573 9.29334 9.73469 10.2679 8.4139C10.6714 7.87291 10.4549 7.51226 9.7806 7.6341C9.45084 7.69258 9.11123 7.71695 8.75686 7.70233C6.3501 7.60486 4.38137 5.61149 4.37153 3.25747C4.36661 2.62388 4.49949 2.02441 4.74066 1.47855C5.00644 0.874205 4.68652 0.586653 4.0713 0.844962C2.12226 1.65888 0.788448 3.60351 0.950868 5.83081Z"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="toggle-ball"></span>
+        </label>
+      </div>
+      <!-- TOGGLE BÖLÜM SONU -->
 
-    <!-- HEADER BÖLÜMÜ -->
-    <header class="page-header">
-      <div class="container">
-        <div class="header-logo">
-          <a href="index.html"
-            ><img src="data:image/png;base64,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" alt="Logo" />
-            <span class="logo-text">Cinemania</span></a
-          >
+      <!-- HEADER BÖLÜMÜ -->
+      <header class="page-header">
+        <div class="container">
+          <div class="header-logo">
+            <a href="index.html"
+              ><img src="data:image/png;base64,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" alt="Logo" />
+              <span class="logo-text">Cinemania</span></a
+            >
+          </div>
+          <div class="menu">
+            <a href="" id="menu-toggle" class="menu-text">MENU</a>
+          </div>
+          <div class="nav-list">
+            <nav class="nav-list">
+              <ul class="nav-list">
+                <li>
+                  <a href="index.html" class="nav-link active-link">HOME</a>
+                </li>
+                <li><a href="catalog.html" class="nav-link">CATALOG</a></li>
+                <li>
+                  <a href="mylibrary.html" class="nav-link">MY LIBRARY</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <div class="menu">
-          <a href="" id="menu-toggle" class="menu-text">MENU</a>
-        </div>
-        <div class="nav-list">
-          <nav class="nav-list">
-            <ul class="nav-list">
-              <li><a href="index.html" class="nav-link">HOME</a></li>
+      </header>
+
+      <!-- MOBİL MENU -->
+      <div class="backdrop" id="backdrop"></div>
+      <div class="mobil" id="mobil">
+        <div class="mobil-content">
+          <a href="./index.html" class="mobil-logo">
+            <img src="data:image/png;base64,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" alt="Logo" />
+          </a>
+          <nav class="mobil-nav">
+            <ul class="mobil-nav-list">
+              <li><a class="mobile-nav-list" href="./index.html">HOME</a></li>
               <li>
-                <a href="catalog.html" class="nav-link active-link">CATALOG</a>
+                <a class="mobile-nav-list" href="./catalog.html">CATALOG</a>
               </li>
-              <li><a href="mylibrary.html" class="nav-link">MY LIBRARY</a></li>
+              <li>
+                <a class="mobile-nav-list" href="./mylibrary.html"
+                  >MY LIBRARY</a
+                >
+              </li>
             </ul>
           </nav>
         </div>
       </div>
-    </header>
-    <!-- HEADER BÖLÜMÜ SON -->
+    </div>
 
     <!-- MOBİL MENU -->
     <div class="backdrop" id="backdrop"></div>
